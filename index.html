@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeightScale | Enterprise Weighbridge Automation & Fraud Prevention</title>
+    <meta name="description" content="Stop weighbridge fraud and automate your operations with WeightScale. 99.9% accuracy, RFID/ANPR integration, and seamless ERP sync for global industrial leaders.">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WeightScale | Smart Weighbridge Automation">
+    <meta property="og:description" content="Eliminate fraud and boost efficiency with the world's most advanced weighbridge software.">
+    <meta property="og:image" content="assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="loading">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <span class="logo-icon">▲</span>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="sticky-cta">
+        <a href="#contact" class="cta-floating">
+            <i data-lucide="calendar"></i>
+            <span>Request Demo</span>
+        </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="container nav-content">
+            <div class="logo">
+                <span class="logo-icon">▲</span>
+                <span class="logo-text">WeightScale<span></span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#solutions">Solutions</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#industries">Industries</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact" class="btn-primary">Request Demo</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i data-lucide="menu"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div id="hero-canvas"></div>
+        <div class="mesh-gradient"></div>
+        <div class="hero-blobs">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-text-wrapper">
+                <span class="badge">Enterprise Weighing</span>
+                <h1 class="reveal-text">Smart & Reliable <br><span class="gradient-text">Weighbridge Software</span></h1>
+                <p class="hero-sub reveal-text">Automate your weighing operations with advanced, secure, and fully integrated software. Real-time monitoring, RFID, and manless automation.</p>
+                <div class="hero-btns reveal-btns">
+                    <a href="#contact" class="btn-primary">Request Free Demo</a>
+                    <a href="#features" class="btn-secondary">View Case Studies</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal-visual">
+                <div class="hero-dashboard-preview glass">
+                    <div class="preview-header">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <img src="assets/images/dashboard-mock.png" alt="System Preview">
+                    
+                    <!-- Live Data Card (WOW Factor) -->
+                    <div class="data-card glass">
+                        <div class="card-header">
+                            <i data-lucide="activity"></i>
+                            <span>Live Precision</span>
+                        </div>
+                        <div class="card-val">99.98%</div>
+                        <div class="card-chart">
+                            <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Trust Logos & Stats -->
+    <section class="trust-logos">
+        <div class="container">
+            <p style="color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem;">Trusted by industry leaders worldwide</p>
+            <div class="logo-strip">
+                <span>TECHCORP</span>
+                <span>GLOBAL MINING</span>
+                <span>BUILDERS INC.</span>
+                <span>LOGIPATH</span>
+                <span>ENVIRO-SENSE</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid glass reveal-on-scroll">
+                <div class="about-text">
+                    <span class="badge">Who We Are</span>
+                    <h2>Precision & Reliability <br>Since Day One</h2>
+                    <p>We are a technology-driven company specializing in weighbridge software and automation solutions. With years of experience in industrial weighing systems, we help businesses eliminate manual errors and improve operational efficiency. Our mission is to provide reliable, scalable, and smart weighing solutions.</p>
+                    <div class="about-stats">
+                        <div class="mini-stat">
+                            <strong>10+</strong>
+                            <span>Years Experience</span>
+                        </div>
+                        <div class="mini-stat">
+                            <strong>100%</strong>
+                            <span>Secure Data</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <img src="assets/images/about-visual.png" alt="Industrial Technology">
+                    <div class="visual-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item reveal-on-scroll">
+                <span class="stat-val">500+</span>
+                <span class="stat-label">Installations</span>
+            </div>
+            <div class="stat-item reveal-on-scroll">
+                <span class="stat-val">99.9%</span>
+                <span class="stat-label">Accuracy Rate</span>
+            </div>
+            <div class="stat-item reveal-on-scroll">
+                <span class="stat-val">60%</span>
+                <span class="stat-label">Efficiency Boost</span>
+            </div>
+            <div class="stat-item reveal-on-scroll">
+                <span class="stat-val">$2M+</span>
+                <span class="stat-label">Revenue Saved</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Innovation</span>
+                <h2>Cutting-Edge Features</h2>
+                <p>Designed for performance, reliability, and ease of use.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card glass">
+                    <i data-lucide="zap"></i>
+                    <h3>Real-Time Weight</h3>
+                    <p>Sub-second weight capture from any weighbridge scale indicator.</p>
+                </div>
+                <div class="feature-card glass">
+                    <i data-lucide="printer"></i>
+                    <h3>Auto-Ticketing</h3>
+                    <p>Automatic ticket generation and printing upon weight capture.</p>
+                </div>
+                <div class="feature-card glass">
+                    <i data-lucide="message-square"></i>
+                    <h3>SMS / WhatsApp</h3>
+                    <p>Send real-time alerts and weighment reports directly to stakeholders.</p>
+                </div>
+                <div class="feature-card glass">
+                    <i data-lucide="users"></i>
+                    <h3>Access Control</h3>
+                    <p>Advanced user role management and multi-user access security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions" id="solutions">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Solutions</span>
+                <h2>Comprehensive Systems</h2>
+            </div>
+            <div class="solutions-layout">
+                <div class="solutions-grid">
+                    <div class="solution-item reveal-on-scroll">
+                        <div class="solution-icon"><i data-lucide="monitor"></i></div>
+                        <div class="solution-content">
+                            <h3>Standard Software</h3>
+                            <p>Basic operations, ticket generation, and manual data management.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item reveal-on-scroll">
+                        <div class="solution-icon"><i data-lucide="user-x"></i></div>
+                        <div class="solution-content">
+                            <h3>Manless System</h3>
+                            <p>Fully automated un-manned weighing with barrier integration.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item reveal-on-scroll">
+                        <div class="solution-icon"><i data-lucide="radio"></i></div>
+                        <div class="solution-content">
+                            <h3>RFID System</h3>
+                            <p>Vehicle identification via RFID for fast entry and fraud reduction.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item reveal-on-scroll">
+                        <div class="solution-icon"><i data-lucide="camera"></i></div>
+                        <div class="solution-content">
+                            <h3>ANPR System</h3>
+                            <p>Number plate recognition and automatic vehicle tracking logs.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item reveal-on-scroll">
+                        <div class="solution-icon"><i data-lucide="cloud"></i></div>
+                        <div class="solution-content">
+                            <h3>Cloud Software</h3>
+                            <p>Centralized data management with multi-location remote access.</p>
+                        </div>
+                    </div>
+                    <div class="solution-item reveal-on-scroll">
+                        <div class="solution-icon"><i data-lucide="refresh-cw"></i></div>
+                        <div class="solution-content">
+                            <h3>ERP Integration</h3>
+                            <p>Seamless sync with SAP/ERP for automated billing and inventory.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="solutions-visual reveal-on-scroll">
+                    <div class="visual-wrapper glass">
+                        <img src="assets/images/solutions-main.png" alt="Industrial Automation">
+                        <div class="visual-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (Upgraded to Interactive Process) -->
+    <section class="interactive-process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Live Demo</span>
+                <h2>The Automation Flow</h2>
+                <p>Watch how our system handles a typical weighing cycle from entry to exit.</p>
+            </div>
+            
+            <div class="process-visual">
+                <div class="truck-path"></div>
+                
+                <!-- Truck SVG -->
+                <svg id="truck-svg" width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="15" width="60" height="20" rx="4" fill="var(--primary)"/>
+                    <rect x="50" y="10" width="25" height="25" rx="4" fill="var(--primary)"/>
+                    <circle cx="15" cy="35" r="5" fill="#333"/>
+                    <circle cx="55" cy="35" r="5" fill="#333"/>
+                    <rect x="65" y="15" width="10" height="10" rx="2" fill="var(--accent)" opacity="0.6"/>
+                </svg>
+
+                <div class="process-node" id="node-1" style="left: 10%;">
+                    <i data-lucide="truck"></i>
+                    <div class="node-info">
+                        <h4>Arrival</h4>
+                        <p>Vehicle Reaches Bridge</p>
+                    </div>
+                </div>
+
+                <div class="process-node" id="node-2" style="left: 30%;">
+                    <i data-lucide="scan"></i>
+                    <div class="node-info">
+                        <h4>Identify</h4>
+                        <p>RFID / ANPR Scan</p>
+                    </div>
+                </div>
+
+                <div class="process-node" id="node-3" style="left: 50%;">
+                    <i data-lucide="scale"></i>
+                    <div class="node-info">
+                        <h4>Capture</h4>
+                        <p>Automatic Weighing</p>
+                    </div>
+                </div>
+
+                <div class="process-node" id="node-4" style="left: 70%;">
+                    <i data-lucide="database"></i>
+                    <div class="node-info">
+                        <h4>Store</h4>
+                        <p>Secure Data Entry</p>
+                    </div>
+                </div>
+
+                <div class="process-node" id="node-5" style="left: 90%;">
+                    <i data-lucide="printer"></i>
+                    <div class="node-info">
+                        <h4>Print</h4>
+                        <p>Ticket Generated</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview -->
+    <section class="preview">
+        <div class="container">
+            <div class="preview-content-box">
+                <span class="badge">Management</span>
+                <h3>Command & Control</h3>
+                <p>Centralized monitoring with real-time telemetry and advanced audit trails.</p>
+                <a href="#contact" class="btn-primary" style="margin-top: 2rem;">Get Free Demo in 24 Hours</a>
+            </div>
+            <div class="preview-wrapper glass reveal-on-scroll" id="dashboard-container">
+                <div class="dashboard-glare"></div>
+                <img src="assets/images/dashboard-mock.png" alt="Dashboard Preview" class="parallax-img" id="dashboard-img">
+                
+                <!-- Hotspots -->
+                <div class="hotspot" style="top: 25%; left: 35%;" data-tip="Real-time Weighing Telemetry"></div>
+                <div class="hotspot" style="top: 60%; left: 45%;" data-tip="Automated Fraud Detection Alerts"></div>
+                <div class="hotspot" style="top: 30%; left: 75%;" data-tip="Advanced Fleet Analytics"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="industries" id="industries">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Markets</span>
+                <h2>Industries We Serve</h2>
+            </div>
+            <div class="industries-carousel">
+                <div class="industry-card">Mining</div>
+                <div class="industry-card">Cement</div>
+                <div class="industry-card">Steel</div>
+                <div class="industry-card">Logistics</div>
+                <div class="industry-card">Agriculture</div>
+                <div class="industry-card">Construction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Demo Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Visuals</span>
+                <h2>System Gallery</h2>
+                <p>A glimpse into the hardware, software, and real-world operations of WeightScale.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item glass reveal-on-scroll">
+                    <img src="assets/images/gallery-1.png" alt="Hardware Setup">
+                    <div class="gallery-info">
+                        <h4>Precision Hardware</h4>
+                        <span>ANPR & RFID Integration</span>
+                    </div>
+                </div>
+                <div class="gallery-item glass reveal-on-scroll">
+                    <img src="assets/images/gallery-2.png" alt="Industrial Operation">
+                    <div class="gallery-info">
+                        <h4>Real-world Scaling</h4>
+                        <span>Heavy-duty Industrial Weighbridge</span>
+                    </div>
+                </div>
+                <div class="gallery-item glass reveal-on-scroll">
+                    <img src="assets/images/gallery-3.png" alt="Mobile App">
+                    <div class="gallery-info">
+                        <h4>Mobile Control</h4>
+                        <span>Real-time Monitoring App</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="badge">Social Proof</span>
+                <h2>What Industry Leaders Say</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card glass">
+                    <p>"WeightScale transformed our logistics hubs. We eliminated manual errors and saw a return on investment within just 4 months of deployment."</p>
+                    <div class="user">
+                        <span>Robert Sterling</span>
+                        <small>Director of Logistics, Global Mining Corp</small>
+                    </div>
+                </div>
+                <div class="testimonial-card glass" style="opacity: 0;">
+                    <p>"The ANPR integration is flawlessly fast. Our turnaround time dropped by 65%, and the manless system runs 24/7 without a single hiccup."</p>
+                    <div class="user">
+                        <span>Elena Rodriguez</span>
+                        <small>Operations Head, EuroBuild Materials</small>
+                    </div>
+                </div>
+                <div class="testimonial-card glass" style="opacity: 0;">
+                    <p>"The ERP sync with SAP was the easiest implementation we've ever done. Real-time data availability has revolutionized our auditing process."</p>
+                    <div class="user">
+                        <span>David Park</span>
+                        <small>CTO, Asia-Pac Logistics</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid glass">
+                <div class="contact-info">
+                    <h2>Let's talk about <br>your automation.</h2>
+                    <p>Our experts will help you design the perfect solution for your weighbridge needs.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@yourcompany.com"><i data-lucide="mail"></i> info@yourcompany.com</a>
+                        <a href="tel:+91XXXXXXXXXX"><i data-lucide="phone"></i> +91 XXXXX XXXXX</a>
+                    </div>
+                </div>
+                <form class="contact-form" id="main-contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Work Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Select Solution</option>
+                            <option value="manless">Manless System</option>
+                            <option value="cloud">Cloud Software</option>
+                            <option value="erp">ERP Integration</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell us about your project"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" id="form-submit-btn">
+                        <span>Get Free Demo in 24 Hours</span>
+                        <div class="form-loader"></div>
+                    </button>
+                    
+                    <!-- Form States -->
+                    <div class="form-status success-msg" id="form-success">
+                        <i data-lucide="check-circle"></i>
+                        <span>Thank you! We'll be in touch within 24 hours.</span>
+                    </div>
+                    <div class="form-status error-msg" id="form-error">
+                        <i data-lucide="alert-circle"></i>
+                        <span>Something went wrong. Please try again.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <span class="logo-icon">▲</span>
+                        <span class="logo-text">WeightScale<span></span></span>
+                    </div>
+                    <p style="margin-top: 1.5rem; color: var(--text-muted);">Revolutionizing industrial weighing with AI-powered precision and automation.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#solutions">Manless Systems</a></li>
+                        <li><a href="#solutions">RFID Automation</a></li>
+                        <li><a href="#solutions">Cloud ERP Sync</a></li>
+                        <li><a href="#solutions">ANPR Recognition</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links-list">
+                        <li><i data-lucide="mail"></i> info@yourcompany.com</li>
+                        <li><i data-lucide="phone"></i> +91 XXXXX XXXXX</li>
+                        <li><i data-lucide="map-pin"></i> India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 WeightScale. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
