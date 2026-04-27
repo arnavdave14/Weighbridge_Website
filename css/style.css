@@ -292,9 +292,23 @@ h1, h2, h3, h4, .logo-text {
     cursor: pointer;
 }
 
-.logo-icon {
-    color: var(--primary);
-    font-size: 1.8rem;
+.logo-icon, .nav-logo {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.loader-logo {
+    height: 80px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
 }
 
 .logo-text {
