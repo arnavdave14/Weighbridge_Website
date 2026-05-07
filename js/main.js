@@ -206,23 +206,26 @@ function initUI() {
         });
     });
 
-    // Mobile Menu
+    // Mobile Menu Toggle with Icon Switch
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     menuToggle?.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        // If Tailwind hidden class is used
+        const isActive = navLinks.classList.toggle('active');
+        
+        // Toggle Icon between Menu and X
+        const icon = menuToggle.querySelector('i');
+        if (isActive) {
+            icon.setAttribute('data-lucide', 'x');
+            document.body.style.overflow = 'hidden'; // Prevent scroll
+        } else {
+            icon.setAttribute('data-lucide', 'menu');
+            document.body.style.overflow = ''; // Restore scroll
+        }
+        lucide.createIcons();
+        
+        // Tailwind Toggle for visibility
         navLinks.classList.toggle('hidden');
-        navLinks.classList.toggle('flex');
-        navLinks.classList.toggle('fixed');
-        navLinks.classList.toggle('inset-0');
-        navLinks.classList.toggle('bg-white');
-        navLinks.classList.toggle('z-[2000]');
-        navLinks.classList.toggle('items-center');
-        navLinks.classList.toggle('justify-center');
-        navLinks.classList.toggle('flex-col');
-        navLinks.classList.toggle('text-2xl');
     });
 
     // Close mobile menu on link click

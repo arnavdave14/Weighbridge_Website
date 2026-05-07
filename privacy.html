@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Aaravya Enterprises</title>
+    <meta name="description" content="Privacy Policy for Aaravya Enterprises. Learn how we protect your data and ensure operational security.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0891b2',
+                        accent: '#e11d48',
+                        dark: '#020617',
+                        muted: '#475569',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.407.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="bg-slate-50">
+
+    <nav class="fixed top-0 left-0 w-full z-[1000] transition-all duration-500 glass-nav">
+        <div class="w-full h-20 bg-white/90 backdrop-blur-2xl border-b border-black/5 px-8 md:px-16 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center shadow-sm">
+            <!-- Logo Area (Left) -->
+            <a href="index.html" class="flex items-center gap-4 cursor-pointer group">
+                <img src="assets/images/logo.png" alt="Aaravya Logo" class="h-12 w-auto group-hover:rotate-12 transition-transform duration-500">
+                <div class="flex flex-col">
+                    <span class="font-outfit font-black text-2xl tracking-tighter text-dark leading-none">AARAVYA</span>
+                    <span class="font-inter font-bold text-[10px] tracking-[0.2em] text-primary uppercase leading-none mt-1">Enterprises</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links (Center) -->
+            <div class="hidden lg:block nav-links">
+                <ul class="flex items-center justify-center gap-10 font-inter font-semibold text-[13px] text-muted">
+                    <li><a href="index.html#home" class="hover:text-primary transition-all duration-300">Home</a></li>
+                    <li><a href="index.html#about" class="hover:text-primary transition-all duration-300">About</a></li>
+                    <li><a href="index.html#solutions" class="hover:text-primary transition-all duration-300">Solutions</a></li>
+                    <li><a href="index.html#features" class="hover:text-primary transition-all duration-300">Features</a></li>
+                </ul>
+            </div>
+
+            <!-- CTA Area (Right) -->
+            <div class="flex items-center justify-end gap-6">
+                <a href="index.html#contact" class="hidden sm:inline-flex items-center px-8 py-3 bg-primary text-white font-outfit font-bold text-sm rounded-full hover:bg-dark hover:shadow-2xl transition-all duration-500 transform active:scale-95">
+                    Get Started
+                </a>
+                <button class="lg:hidden p-2 text-dark menu-toggle hover:bg-slate-100 rounded-xl transition-colors relative z-[6000]">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-16">
+            <header class="mb-6 border-b border-gray-100 pb-6">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-lg text-primary font-bold text-xs uppercase tracking-widest mb-6">
+                    Legal Document
+                </div>
+                <h1 class="font-outfit font-extrabold text-5xl md:text-6xl text-dark mb-6">Privacy Policy</h1>
+                <p class="text-muted font-inter text-lg">Last Updated: May 2026</p>
+            </header>
+
+            <div class="grid lg:grid-cols-3 gap-12 font-inter text-muted leading-relaxed">
+                <div class="lg:col-span-2 space-y-8">
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-outfit font-bold text-dark">1. Introduction</h2>
+                    <p>Aaravya Enterprises ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our weighbridge automation systems.</p>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-outfit font-bold text-dark">2. Information We Collect</h2>
+                    <p>We may collect information that identifies you or your business, including:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Contact Data:</strong> Name, business email, phone number, and mailing address.</li>
+                        <li><strong>Operational Data:</strong> Vehicle numbers, weighbridge transaction logs, and driver identification (where integrated with our ANPR or RFID systems).</li>
+                        <li><strong>Technical Data:</strong> IP address, browser type, and usage patterns collected via cookies and similar technologies.</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-outfit font-bold text-dark">3. How We Use Your Information</h2>
+                    <p>We use the collected data for various purposes, including:</p>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Providing and maintaining our automation ecosystem.</li>
+                        <li>Syncing weighbridge data with your ERP systems (SAP, Oracle, etc.).</li>
+                        <li>Detecting and preventing weighbridge fraud and theft.</li>
+                        <li>Sending technical updates and responding to support requests.</li>
+                    </ul>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-outfit font-bold text-dark">4. Data Security</h2>
+                    <p>We implement state-of-the-art administrative, technical, and physical security measures to protect your operational data. However, no electronic transmission over the Internet or information storage technology can be guaranteed to be 100% secure.</p>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-2xl font-outfit font-bold text-dark">5. Third-Party Sharing</h2>
+                    <p>We do not sell your personal or operational data. We may share information with trusted third-party service providers (like cloud infrastructure partners) only as necessary to provide our services.</p>
+                </section>
+
+                </div>
+                
+                <!-- Sidebar Info -->
+                <div class="space-y-6">
+                    <div class="bg-white p-8 rounded-3xl border border-gray-100 shadow-sm sticky top-28">
+                        <h3 class="font-outfit font-bold text-dark text-lg mb-4">Quick Contact</h3>
+                        <p class="text-sm mb-6">Have legal or privacy questions? Our team is here to help.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3 text-sm">
+                                <div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                <span>aaravyaenterprises1@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm">
+                                <div class="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                                    <i data-lucide="phone" class="w-4 h-4"></i>
+                                </div>
+                                <span>+91 9893224689</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white pt-24 pb-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-20">
+                <div class="md:col-span-1 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <img src="assets/images/logo.png" alt="Aaravya Logo" class="h-10 w-auto">
+                        <div class="font-outfit font-bold text-xl text-dark">Aaravya</div>
+                    </div>
+                    <p class="text-muted font-inter text-sm leading-relaxed">The global leader in industrial weighbridge automation and fraud prevention systems.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-outfit font-bold text-dark mb-6">Company</h4>
+                    <ul class="space-y-4 text-muted text-sm font-medium">
+                        <li><a href="index.html#about" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="index.html#solutions" class="hover:text-primary transition-colors">Solutions</a></li>
+                        <li><a href="index.html#features" class="hover:text-primary transition-colors">Technology</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-outfit font-bold text-dark mb-6">Support</h4>
+                    <ul class="space-y-4 text-muted text-sm font-medium">
+                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-muted text-xs font-inter">© 2026 Aaravya Enterprises. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

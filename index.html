@@ -81,7 +81,7 @@
     </div>
 
     <nav class="fixed top-0 left-0 w-full z-[1000] transition-all duration-500 glass-nav">
-        <div class="w-full h-20 bg-white/90 backdrop-blur-2xl border-b border-black/5 px-8 md:px-16 grid grid-cols-[1fr_auto_1fr] items-center shadow-sm">
+        <div class="w-full h-20 bg-white/90 backdrop-blur-2xl border-b border-black/5 px-8 md:px-16 flex justify-between lg:grid lg:grid-cols-[1fr_auto_1fr] items-center shadow-sm">
             <!-- Logo Area (Left) -->
             <div class="flex items-center gap-4 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
                 <img src="assets/images/logo.png" alt="Aaravya Logo" class="h-12 w-auto group-hover:rotate-12 transition-transform duration-500">
@@ -92,7 +92,7 @@
             </div>
 
             <!-- Navigation Links (Center) -->
-            <div class="hidden lg:block">
+            <div class="hidden lg:block nav-links">
                 <ul class="flex items-center justify-center gap-10 font-inter font-semibold text-[13px] text-muted">
                     <li><a href="#home" class="hover:text-primary transition-all duration-300 relative group">Home<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a></li>
                     <li><a href="#about" class="hover:text-primary transition-all duration-300 relative group">About<span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a></li>
@@ -108,7 +108,7 @@
                 <a href="#contact" class="hidden sm:inline-flex items-center px-8 py-3 bg-primary text-white font-outfit font-bold text-sm rounded-full hover:bg-dark hover:shadow-2xl hover:shadow-primary/40 transition-all duration-500 transform active:scale-95">
                     Get Started
                 </a>
-                <button class="lg:hidden p-2 text-dark menu-toggle hover:bg-slate-100 rounded-xl transition-colors">
+                <button class="lg:hidden p-2 text-dark menu-toggle hover:bg-slate-100 rounded-xl transition-colors relative z-[6000]">
                     <i data-lucide="menu" class="w-7 h-7"></i>
                 </button>
             </div>
@@ -128,13 +128,13 @@
                     <span class="text-primary font-inter font-bold text-xs uppercase tracking-widest">Global Industry Standard</span>
                 </div>
                 
-                <h1 class="font-outfit font-extrabold text-5xl md:text-7xl lg:text-8xl text-dark leading-[0.95] tracking-tight">
+                <h1 class="font-outfit font-extrabold text-dark leading-[0.95] tracking-tight" style="font-size: var(--fs-display);">
                     Next-Gen <br>
-                    <span class="text-primary italic text-6xl md:text-8xl lg:text-9xl">Automation</span> <br>
+                    <span class="text-primary italic" style="font-size: 1.1em;">Automation</span> <br>
                     for Industry
                 </h1>
                 
-                <p class="font-inter text-lg md:text-xl text-muted max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                <p class="font-inter text-muted max-w-xl mx-auto lg:mx-0 leading-relaxed" style="font-size: var(--fs-base);">
                     Aaravya Enterprises delivers the world's most advanced weighbridge management systems with AI-driven fraud detection and 99.9% operational accuracy.
                 </p>
                 
@@ -167,7 +167,7 @@
     </section>
 
     <!-- Trust Logos Section -->
-    <section class="py-20 bg-slate-50/50 border-y border-slate-100 overflow-hidden" id="industries">
+    <section class="bg-slate-50/50 border-y border-slate-100 overflow-hidden section-padding" id="industries">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-12">
                 <p class="font-inter font-bold text-[10px] tracking-[0.3em] text-slate-400 uppercase">Trusted by Global Industry Leaders</p>
@@ -184,13 +184,13 @@
     </section>
 
     <!-- About Us -->
-    <section class="py-24 overflow-hidden" id="about">
+    <section class="overflow-hidden section-padding" id="about">
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center">
             <div class="space-y-8">
                 <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-secondary/10 rounded-lg text-secondary font-bold text-xs uppercase tracking-widest">
                     Legacy of Trust
                 </div>
-                <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-dark leading-tight">
+                <h2 class="font-outfit font-extrabold text-dark leading-tight" style="font-size: var(--fs-xl);">
                     Redefining <br>
                     <span class="text-secondary">Precision</span> for a <br>
                     Digital Era
@@ -221,36 +221,36 @@
     </section>
 
     <!-- Stats Bar -->
-    <section class="py-12 border-y border-gray-100 bg-slate-50/50">
-        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-between gap-8 text-center md:text-left">
-            <div class="flex-1 min-w-[200px]">
-                <div class="text-sm font-inter font-semibold text-muted uppercase tracking-wider mb-1">Accuracy</div>
-                <div class="text-3xl font-outfit font-bold text-dark">99.98%</div>
+    <section class="border-y border-gray-100 bg-slate-50/50 section-padding">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="text-center md:text-left">
+                <div class="text-xs font-inter font-semibold text-muted uppercase tracking-wider mb-1">Accuracy</div>
+                <div class="font-outfit font-bold text-dark" style="font-size: var(--fs-l);">99.98%</div>
             </div>
-            <div class="flex-1 min-w-[200px]">
-                <div class="text-sm font-inter font-semibold text-muted uppercase tracking-wider mb-1">Efficiency</div>
-                <div class="text-3xl font-outfit font-bold text-dark">+60%</div>
+            <div class="text-center md:text-left">
+                <div class="text-xs font-inter font-semibold text-muted uppercase tracking-wider mb-1">Efficiency</div>
+                <div class="font-outfit font-bold text-dark" style="font-size: var(--fs-l);">+60%</div>
             </div>
-            <div class="flex-1 min-w-[200px]">
-                <div class="text-sm font-inter font-semibold text-muted uppercase tracking-wider mb-1">Response</div>
-                <div class="text-3xl font-outfit font-bold text-dark">&lt;100ms</div>
+            <div class="text-center md:text-left">
+                <div class="text-xs font-inter font-semibold text-muted uppercase tracking-wider mb-1">Response</div>
+                <div class="font-outfit font-bold text-dark" style="font-size: var(--fs-l);">&lt;100ms</div>
             </div>
-            <div class="flex-1 min-w-[200px]">
-                <div class="text-sm font-inter font-semibold text-muted uppercase tracking-wider mb-1">Revenue Saved</div>
-                <div class="text-3xl font-outfit font-bold text-dark">$5M+</div>
+            <div class="text-center md:text-left">
+                <div class="text-xs font-inter font-semibold text-muted uppercase tracking-wider mb-1">Revenue Saved</div>
+                <div class="font-outfit font-bold text-dark" style="font-size: var(--fs-l);">$5M+</div>
             </div>
         </div>
     </section>
 
     <!-- Features Section (Bento Grid) -->
-    <section class="py-24 bg-white" id="features">
+    <section class="bg-white section-padding" id="features">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-20 space-y-4">
                 <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-dark">Engineered for <span class="text-primary">Excellence</span></h2>
                 <p class="font-inter text-muted text-lg max-w-2xl mx-auto">Beyond simple weighing. A complete ecosystem of industrial automation and security.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[800px]">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Major Feature -->
                 <div class="md:col-span-2 md:row-span-2 bg-slate-900 rounded-[2.5rem] p-10 flex flex-col justify-between overflow-hidden relative group">
                     <div class="absolute top-0 right-0 p-10 opacity-20 group-hover:opacity-40 transition-opacity">
@@ -311,14 +311,14 @@
     </section>
 
     <!-- Solutions Section -->
-    <section class="py-24 bg-slate-50" id="solutions">
+    <section class="bg-slate-50 section-padding" id="solutions">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                 <div class="space-y-4 max-w-2xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-lg text-primary font-bold text-xs uppercase tracking-widest">
                         Core Offerings
                     </div>
-                    <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-dark">Comprehensive <span class="text-primary">Ecosystems</span></h2>
+                    <h2 class="font-outfit font-extrabold text-dark" style="font-size: var(--fs-xl);">Comprehensive <span class="text-primary">Ecosystems</span></h2>
                     <p class="font-inter text-muted text-lg leading-relaxed">From single-bridge software to multi-state enterprise networks, we provide the infrastructure for total operational visibility.</p>
                 </div>
                 <div class="pb-2">
@@ -380,13 +380,13 @@
     </section>
 
     <!-- Interactive Process -->
-    <section class="py-24 bg-white" id="process">
+    <section class="bg-white section-padding" id="process">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <div class="space-y-4 mb-20">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-accent/10 rounded-lg text-accent font-bold text-xs uppercase tracking-widest">
                     Live Workflow
                 </div>
-                <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-dark">The Automation <span class="text-accent">Flow</span></h2>
+                <h2 class="font-outfit font-extrabold text-dark" style="font-size: var(--fs-xl);">The Automation <span class="text-accent">Flow</span></h2>
                 <p class="font-inter text-muted text-lg max-w-2xl mx-auto">See how our system handles a typical weighing cycle from entry to final exit.</p>
             </div>
             
@@ -451,14 +451,14 @@
     </section>
 
     <!-- Command Center Preview -->
-    <section class="py-24 bg-slate-900 overflow-hidden relative">
+    <section class="bg-slate-900 overflow-hidden relative section-padding">
         <div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-20 items-center relative z-10">
             <div class="space-y-8">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/20 rounded-lg text-primary font-bold text-xs uppercase tracking-widest">
                     Centralized Control
                 </div>
-                <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-white leading-tight">
+                <h2 class="font-outfit font-extrabold text-white leading-tight" style="font-size: var(--fs-xl);">
                     Your Entire Fleet, <br>
                     <span class="text-primary italic">In One View.</span>
                 </h2>
@@ -485,17 +485,17 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-24 bg-white" id="gallery">
+    <section class="bg-white section-padding" id="gallery">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16 space-y-4">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-lg text-primary font-bold text-xs uppercase tracking-widest">
                     Visual Proof
                 </div>
-                <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-dark">System <span class="text-primary">Gallery</span></h2>
+                <h2 class="font-outfit font-extrabold text-dark" style="font-size: var(--fs-xl);">System <span class="text-primary">Gallery</span></h2>
                 <p class="font-inter text-muted text-lg max-w-2xl mx-auto">A glimpse into the hardware, software, and real-world operations of Aaravya Enterprises.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="group relative aspect-video rounded-3xl overflow-hidden shadow-xl">
                     <img src="assets/images/gallery-1.png" alt="Hardware" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-dark/80 via-transparent to-transparent p-8 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -522,13 +522,13 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-24 bg-slate-50" id="testimonials">
+    <section class="bg-slate-50 section-padding" id="testimonials">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16 space-y-4">
-                <h2 class="font-outfit font-extrabold text-4xl md:text-5xl text-dark">Trusted by <span class="text-primary">Leaders</span></h2>
+                <h2 class="font-outfit font-extrabold text-dark" style="font-size: var(--fs-l);">Trusted by <span class="text-primary">Leaders</span></h2>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100 space-y-6 hover:shadow-xl transition-all duration-500">
                     <div class="flex text-yellow-400 gap-1">
                         <i data-lucide="star" class="w-4 h-4 fill-current"></i>
@@ -585,7 +585,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-24 bg-white" id="contact">
+    <section class="bg-white section-padding" id="contact">
         <div class="max-w-7xl mx-auto px-4">
             <div class="bg-dark rounded-[3rem] p-8 md:p-20 grid lg:grid-cols-2 gap-16 overflow-hidden relative border border-white/5">
                 <!-- Background Decorative Blob -->
@@ -593,7 +593,7 @@
                 
                 <div class="space-y-10 relative z-10">
                     <div class="space-y-4">
-                        <h2 class="font-outfit font-extrabold text-4xl md:text-6xl text-white">Let's Secure Your <br><span class="text-primary">Operations</span></h2>
+                        <h2 class="font-outfit font-extrabold text-white" style="font-size: var(--fs-xl);">Let's Secure Your <br><span class="text-primary">Operations</span></h2>
                         <p class="font-inter text-slate-400 text-lg">Ready to eliminate fraud? Our engineers are standing by to design your custom automation ecosystem.</p>
                     </div>
 
@@ -661,7 +661,7 @@
     <!-- Footer -->
     <footer class="bg-slate-50 pt-24 pb-12">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-20">
                 <div class="md:col-span-1 space-y-6">
                     <div class="flex items-center gap-3">
                         <img src="assets/images/logo.png" alt="Aaravya Logo" class="h-10 w-auto">
@@ -683,10 +683,7 @@
                 <div>
                     <h4 class="font-outfit font-bold text-dark mb-6">Support</h4>
                     <ul class="space-y-4 text-muted text-sm font-medium">
-                        <li><a href="#" class="hover:text-primary transition-colors">Documentation</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">API Status</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Global Support</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                        <li><a href="privacy.html" class="hover:text-primary transition-colors">Privacy Policy</a></li>
                     </ul>
                 </div>
 
