@@ -91,6 +91,7 @@ function initThreeHero() {
 function initProcessFlow() {
     const truck = document.getElementById('truck-svg');
     const nodes = document.querySelectorAll('.process-node');
+    const progressBar = document.getElementById('truck-progress');
     if (!truck) return;
 
     // Set initial states for nodes
@@ -98,7 +99,7 @@ function initProcessFlow() {
 
     const tl = gsap.timeline({
         scrollTrigger: {
-            trigger: "#process", // Changed from .interactive-process
+            trigger: "#process",
             start: "top 60%",
             end: "bottom 20%",
             scrub: 1,
@@ -108,26 +109,37 @@ function initProcessFlow() {
     const activeStyle = { 
         borderColor: "#2563eb", 
         backgroundColor: "rgba(37, 99, 235, 0.1)", 
-        boxShadow: "0 0 30px rgba(37, 99, 235, 0.2)",
+        boxShadow: "0 0 20px rgba(37, 99, 235, 0.15)",
         duration: 0.3 
     };
 
     tl.to(truck, { left: "10%", duration: 1 })
+      .to(progressBar, { width: "10%", duration: 1 }, "<")
       .to(nodes[0], activeStyle, "-=0.1")
       .to(nodes[0].querySelector('.node-info'), { opacity: 1, color: "#020617", duration: 0.3 }, "-=0.3")
+      
       .to(truck, { left: "30%", duration: 1.5, delay: 0.2 })
+      .to(progressBar, { width: "30%", duration: 1.5 }, "<")
       .to(nodes[1], activeStyle, "-=0.1")
       .to(nodes[1].querySelector('.node-info'), { opacity: 1, color: "#020617", duration: 0.3 }, "-=0.3")
+      
       .to(truck, { left: "50%", duration: 1.5, delay: 0.2 })
+      .to(progressBar, { width: "50%", duration: 1.5 }, "<")
       .to(nodes[2], activeStyle, "-=0.1")
       .to(nodes[2].querySelector('.node-info'), { opacity: 1, color: "#020617", duration: 0.3 }, "-=0.3")
+      
       .to(truck, { left: "70%", duration: 1.5, delay: 0.2 })
+      .to(progressBar, { width: "70%", duration: 1.5 }, "<")
       .to(nodes[3], activeStyle, "-=0.1")
       .to(nodes[3].querySelector('.node-info'), { opacity: 1, color: "#020617", duration: 0.3 }, "-=0.3")
+      
       .to(truck, { left: "90%", duration: 1.5, delay: 0.2 })
+      .to(progressBar, { width: "90%", duration: 1.5 }, "<")
       .to(nodes[4], activeStyle, "-=0.1")
       .to(nodes[4].querySelector('.node-info'), { opacity: 1, color: "#020617", duration: 0.3 }, "-=0.3")
-      .to(truck, { left: "110%", duration: 1 });
+      
+      .to(truck, { left: "110%", duration: 1 })
+      .to(progressBar, { width: "100%", duration: 1 }, "<");
 }
 
 // 3. DASHBOARD INTERACTION
@@ -309,6 +321,119 @@ function initUI() {
     }
 }
 
+function initNewsletter() {
+    const form = document.getElementById('newsletter-form');
+    const btn = document.getElementById('newsletter-btn');
+    const successMsg = document.getElementById('newsletter-success');
+
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        btn.disabled = true;
+        btn.innerText = "...";
+
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            if (response.status == 200) {
+                successMsg.classList.remove('hidden');
+                form.reset();
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 5000);
+            }
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerText = "Join";
+        });
+    });
+}
+
+// 5. STAT COUNTERS
+function initStatCounters() {
+    const counters = document.querySelectorAll('.stat-counter');
+    if (!counters.length) return;
+
+    ScrollTrigger.create({
+        trigger: "#stats",
+        start: "top 80%",
+        onEnter: () => {
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const isDecimal = counter.getAttribute('data-target').includes('.');
+                
+                gsap.to(counter, {
+                    innerText: target,
+                    duration: 2,
+                    ease: "power2.out",
+                    snap: { innerText: isDecimal ? 0.01 : 1 },
+                    onUpdate: function() {
+                        if (isDecimal) {
+                            counter.innerText = parseFloat(counter.innerText).toFixed(2);
+                        }
+                    }
+                });
+            });
+        },
+        once: true // Only animate once
+    });
+}
+
+// 6. SCROLL TO TOP
+function initScrollToTop() {
+    const btn = document.getElementById('back-to-top');
+    const circle = document.getElementById('progress-circle');
+    const percentText = document.getElementById('scroll-percent');
+    if (!btn || !lenis) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+        const currentScroll = window.scrollY;
+        const scrollPercent = Math.round((currentScroll / scrollTotal) * 100);
+        
+        // Update Circle
+        if (circle) {
+            const circumference = 283; // 2 * pi * r (r=45)
+            const offset = circumference - (scrollPercent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+        }
+
+        // Update Text
+        if (percentText) {
+            percentText.textContent = `${scrollPercent}%`;
+        }
+
+        // Show/Hide Button
+        if (currentScroll > 500) {
+            btn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            btn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        } else {
+            btn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            btn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        }
+    });
+
+    btn.addEventListener('click', () => {
+        lenis.scrollTo(0, {
+            duration: 2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+    });
+}
+
 // 5. PRELOADER & FORM HANDLING
 function initPreloader() {
     const preloader = document.getElementById('preloader');
@@ -345,14 +470,49 @@ function initFormHandling() {
         submitBtn.classList.add('is-loading');
         submitBtn.disabled = true;
 
-        setTimeout(() => {
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        // 1. Format WhatsApp Message
+        const waMessage = `*New Inquiry - Aaravya Enterprises*%0A%0A` +
+                        `*Name:* ${object.name}%0A` +
+                        `*Phone:* ${object.phone}%0A` +
+                        `*Email:* ${object.email}%0A` +
+                        `*Message:* ${object.message}`;
+        
+        const waUrl = `https://wa.me/919893224689?text=${waMessage}`;
+
+        // 2. Send to Email (Web3Forms)
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            if (response.status == 200) {
+                // Success UI
+                successMsg.style.display = 'flex';
+                gsap.from(successMsg, { y: 10, opacity: 0, duration: 0.5 });
+                form.reset();
+                
+                // 3. Open WhatsApp in a new tab
+                window.open(waUrl, '_blank');
+            } else {
+                errorMsg.style.display = 'flex';
+            }
+        })
+        .catch(error => {
+            console.error("Form Error:", error);
+            errorMsg.style.display = 'flex';
+        })
+        .finally(() => {
             submitBtn.classList.remove('is-loading');
             submitBtn.disabled = false;
-            
-            form.reset();
-            successMsg.style.display = 'flex';
-            gsap.from(successMsg, { y: 10, opacity: 0, duration: 0.5 });
-        }, 2000);
+        });
     });
 }
 
@@ -422,6 +582,16 @@ function initSmoothScroll() {
 
 // Initialize
 window.addEventListener('DOMContentLoaded', () => {
+    // Robust Icon Initialization
+    const tryIcons = () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        } else {
+            setTimeout(tryIcons, 100);
+        }
+    };
+    tryIcons();
+
     initPreloader();
     initSmoothScroll();
     initUI();
@@ -441,6 +611,8 @@ window.addEventListener('DOMContentLoaded', () => {
     initProcessFlow();
     initDashboard();
     initFormHandling();
-    lucide.createIcons();
+    initNewsletter();
+    initStatCounters();
+    initScrollToTop();
+    initSecurityLayer();
 });
-

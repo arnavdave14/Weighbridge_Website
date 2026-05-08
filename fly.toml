@@ -1,0 +1,10 @@
+app = "aaravya-weighbridge"
+primary_region = "bom" # Mumbai region, good for India-based business
+
+[http_service]
+  internal_port = 80
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]

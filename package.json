@@ -1,0 +1,24 @@
+{
+  "name": "weighbridge_front_end",
+  "version": "1.0.0",
+  "description": "This is a premium, high-performance landing page for a Weighbridge Software Company.",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arnavdave14/Weighbridge_Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/arnavdave14/Weighbridge_Website/issues"
+  },
+  "homepage": "https://github.com/arnavdave14/Weighbridge_Website#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.2.4"
+  }
+}
