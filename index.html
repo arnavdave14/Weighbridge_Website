@@ -127,6 +127,10 @@
                             class="hover:text-primary transition-all duration-300 relative group">Gallery<span
                                 class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a>
                     </li>
+                    <li><a href="#expanded-solutions"
+                            class="hover:text-primary transition-all duration-300 relative group">Portfolio<span
+                                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300"></span></a>
+                    </li>
                 </ul>
             </div>
 
@@ -765,182 +769,244 @@
         </div>
     </section>
 
-    <!-- Expanded Solutions Portfolio -->
-    <section class="bg-white section-padding" id="expanded-solutions">
+    <!-- Portfolio Section -->
+    <section class="bg-slate-50 section-padding" id="expanded-solutions">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-center mb-16 space-y-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-lg text-primary font-bold text-xs uppercase tracking-widest">
+
+            <!-- Section Header -->
+            <div class="text-center mb-20 space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-lg text-primary font-bold text-xs uppercase tracking-widest">
                     Complete Portfolio
                 </div>
                 <h2 class="font-outfit font-extrabold text-dark" style="font-size: var(--fs-xl);">Software Development & <span class="text-primary">Industrial Automation</span> Solutions</h2>
-                <p class="font-inter text-muted text-lg max-w-3xl mx-auto">We deliver innovative software, automation, and digital transformation solutions designed to improve business productivity, streamline operations, and automate industrial processes. Our expertise spans weighbridge automation, custom software development, web solutions, and intelligent industrial systems.</p>
+                <p class="font-inter text-muted text-lg max-w-3xl mx-auto leading-relaxed">We deliver innovative software, automation, and digital transformation solutions designed to improve business productivity, streamline operations, and automate industrial processes.</p>
             </div>
 
-            <div class="space-y-16">
-                <!-- Weighbridge Software Solutions -->
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-gray-100 shadow-sm">
-                    <h3 class="font-outfit font-bold text-3xl text-dark mb-4">Weighbridge Software Solutions</h3>
-                    <p class="text-muted font-inter mb-8">Intelligent Weighbridge Management Software designed to automate and simplify the complete weighing process while ensuring maximum accuracy, security, and operational efficiency.</p>
-                    
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-bold text-lg text-dark mb-4 border-b pb-2">Solutions Offered</h4>
-                            <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5">
-                                <li>Single Weighbridge Software</li>
-                                <li>Multi Weighbridge Software</li>
-                                <li>Unlimited Weighbridge Network</li>
-                                <li>Cloud Based Weighbridge Software</li>
-                                <li>Client Server Architecture</li>
-                                <li>Mining, Industrial & Factory Weighbridge Software</li>
-                                <li>Cement, Steel & Sugar Mill Weighbridge Software</li>
-                                <li>Warehouse & Logistic Weighbridge Software</li>
-                                <li>Smart Weighbridge Dashboard & Remote Monitoring System</li>
-                            </ul>
+            <div class="space-y-8">
+
+                <!-- ROW 1: Weighbridge (hero card) + Manless Automation -->
+                <div class="grid lg:grid-cols-5 gap-8">
+
+                    <!-- Weighbridge Software - Large Card -->
+                    <div class="lg:col-span-3 bg-slate-900 rounded-[2.5rem] p-10 flex flex-col justify-between overflow-hidden relative group">
+                        <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-25 transition-opacity duration-700">
+                            <i data-lucide="scale" class="w-72 h-72 text-primary"></i>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg text-dark mb-4 border-b pb-2">Features</h4>
-                            <ul class="space-y-2 text-sm text-slate-600 list-disc pl-5 grid grid-cols-2 gap-x-4">
-                                <li>Gross, Tare & Net Weight Calculation</li>
-                                <li>Vehicle & Material Master Management</li>
-                                <li>Party, Vendor & Driver Management</li>
-                                <li>User Permission Control</li>
-                                <li>Live Camera & ANPR Integration</li>
-                                <li>RFID Based Automation</li>
-                                <li>Digital Signature & Alerts</li>
-                                <li>Automatic Ticket Printing</li>
-                                <li>PDF & Excel Reports</li>
-                                <li>Data Backup & Unlimited Storage</li>
-                                <li>Multi-Location Connectivity</li>
-                                <li>API & SAP Integration</li>
-                                <li>Mobile Application Support</li>
-                            </ul>
+                        <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary/10 blur-[80px] -mb-20 -ml-20"></div>
+                        <div class="relative z-10 space-y-6">
+                            <div class="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center text-primary">
+                                <i data-lucide="monitor-check" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-outfit font-bold text-3xl text-white">Weighbridge Software Solutions</h3>
+                            <p class="text-slate-400 font-inter leading-relaxed">Intelligent Weighbridge Management Software to automate and simplify the complete weighing process with maximum accuracy, security, and operational efficiency.</p>
+                        </div>
+                        <div class="relative z-10 mt-8 grid grid-cols-2 gap-3">
+                            <div>
+                                <div class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Solutions</div>
+                                <ul class="space-y-1.5">
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>Single & Multi Weighbridge</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>Cloud Based Software</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>Mining & Industrial</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>Cement, Steel & Sugar Mill</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>Warehouse & Logistic</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-primary rounded-full flex-shrink-0"></span>Smart Dashboard & Remote</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-xs font-bold text-primary uppercase tracking-widest mb-3">Key Features</div>
+                                <ul class="space-y-1.5">
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>ANPR & RFID Integration</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>API & SAP Integration</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>Auto Ticket Printing</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>PDF & Excel Reports</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>Multi-Location Network</li>
+                                    <li class="flex items-center gap-2 text-slate-300 text-sm"><span class="w-1.5 h-1.5 bg-secondary rounded-full flex-shrink-0"></span>Mobile App Support</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Fully Automatic Manless Weighbridge Automation -->
-                <div class="bg-slate-900 p-10 rounded-[2.5rem] border border-slate-800 shadow-sm text-white">
-                    <h3 class="font-outfit font-bold text-3xl text-white mb-4">Fully Automatic Manless Weighbridge Automation</h3>
-                    <p class="text-slate-400 font-inter mb-8">Transform your conventional weighbridge into a completely unmanned and intelligent weighing station.</p>
-                    
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-bold text-lg text-white mb-4 border-b border-slate-700 pb-2">Automation Includes</h4>
-                            <ul class="space-y-2 text-sm text-slate-300 list-disc pl-5">
-                                <li>RFID Vehicle Identification & Boom Barrier Automation</li>
-                                <li>Traffic Signal Control & Ultrasonic Position Detection</li>
-                                <li>ANPR Camera & AI Based Vehicle Detection</li>
-                                <li>Driver Voice Announcement & Automatic Gate Opening</li>
-                                <li>Auto Ticket Printing & Live Monitoring Dashboard</li>
-                                <li>Control Room & Centralized Server Monitoring</li>
-                            </ul>
+                    <!-- Manless Automation - Tall Card -->
+                    <div class="lg:col-span-2 bg-primary rounded-[2.5rem] p-10 flex flex-col justify-between overflow-hidden relative group">
+                        <div class="absolute -top-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div class="relative z-10 space-y-5">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-white group-hover:rotate-12 transition-transform duration-500">
+                                <i data-lucide="bot" class="w-8 h-8"></i>
+                            </div>
+                            <h3 class="font-outfit font-bold text-2xl text-white">Fully Automatic Manless Weighbridge</h3>
+                            <p class="text-white/70 font-inter text-sm leading-relaxed">Transform your conventional weighbridge into a completely unmanned, intelligent weighing station operating 24/7.</p>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-lg text-white mb-4 border-b border-slate-700 pb-2">Hardware Integration</h4>
-                            <ul class="space-y-2 text-sm text-slate-300 list-disc pl-5 grid grid-cols-2 gap-x-4">
-                                <li>RFID Reader & Boom Barrier</li>
-                                <li>Traffic Light & Industrial Cameras</li>
-                                <li>ANPR Camera & LED Display</li>
-                                <li>Ultrasonic Sensors & IO Controller</li>
-                                <li>Weighbridge Indicator & Printer</li>
-                                <li>Audio System</li>
-                            </ul>
+                        <div class="relative z-10 mt-8 space-y-2">
+                            <div class="text-xs font-bold text-white/60 uppercase tracking-widest mb-4">Automation Suite</div>
+                            <div class="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"><i data-lucide="wifi" class="w-4 h-4 text-white flex-shrink-0"></i><span class="text-white text-sm">RFID Vehicle Identification</span></div>
+                            <div class="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"><i data-lucide="camera" class="w-4 h-4 text-white flex-shrink-0"></i><span class="text-white text-sm">ANPR & AI Vehicle Detection</span></div>
+                            <div class="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"><i data-lucide="gate" class="w-4 h-4 text-white flex-shrink-0"></i><span class="text-white text-sm">Boom Barrier Automation</span></div>
+                            <div class="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"><i data-lucide="printer" class="w-4 h-4 text-white flex-shrink-0"></i><span class="text-white text-sm">Auto Ticket Printing</span></div>
+                            <div class="flex items-center gap-3 bg-white/10 rounded-xl px-4 py-2.5"><i data-lucide="monitor" class="w-4 h-4 text-white flex-shrink-0"></i><span class="text-white text-sm">Live Monitoring Dashboard</span></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Crusher Management Software -->
-                    <div class="bg-blue-50 p-8 rounded-[2rem] border border-blue-100 shadow-sm">
-                        <h3 class="font-outfit font-bold text-2xl text-dark mb-4">Crusher Management Software</h3>
-                        <p class="text-muted font-inter text-sm mb-6">Digitize your entire crusher operation with one integrated software platform.</p>
-                        <h4 class="font-bold text-sm text-dark mb-3">Modules</h4>
-                        <ul class="space-y-1.5 text-sm text-slate-600 list-disc pl-5 grid grid-cols-2 gap-x-2">
-                            <li>Purchase & Sales Management</li>
-                            <li>Production & Dispatch</li>
-                            <li>Royalty Management</li>
-                            <li>Vehicle Entry & Weighbridge</li>
-                            <li>Material Stock & Ledgers</li>
-                            <li>Expense & Diesel Tracking</li>
-                            <li>Crusher Machine Monitoring</li>
-                            <li>Daily & Financial Reports (GST)</li>
+                <!-- ROW 2: Crusher + Office + Inventory + Custom (2x2 grid) -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Crusher Management -->
+                    <div class="group bg-white p-8 rounded-[2rem] border border-gray-100 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500">
+                        <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="mountain" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Crusher Management</h3>
+                        <p class="text-muted font-inter text-sm leading-relaxed mb-5">Digitize your entire crusher operation with one integrated platform.</p>
+                        <ul class="space-y-1.5">
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Purchase & Sales Management</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Production & Dispatch</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Royalty Management</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>Weighbridge Integration</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>GST & Financial Reports</li>
                         </ul>
                     </div>
 
-                    <!-- Office Management Software -->
-                    <div class="bg-indigo-50 p-8 rounded-[2rem] border border-indigo-100 shadow-sm">
-                        <h3 class="font-outfit font-bold text-2xl text-dark mb-4">Office Management Software</h3>
-                        <p class="text-muted font-inter text-sm mb-6">A complete digital office solution.</p>
-                        <h4 class="font-bold text-sm text-dark mb-3">Features</h4>
-                        <ul class="space-y-1.5 text-sm text-slate-600 list-disc pl-5 grid grid-cols-2 gap-x-2">
-                            <li>Employee Management</li>
-                            <li>Attendance & Biometric</li>
-                            <li>Leave & Salary Management</li>
-                            <li>Task Assignment</li>
-                            <li>Visitor Management</li>
-                            <li>File Management</li>
-                            <li>Meeting Scheduler</li>
-                            <li>Department & Dashboard (MIS)</li>
+                    <!-- Office Management -->
+                    <div class="group bg-white p-8 rounded-[2rem] border border-gray-100 hover:border-secondary/30 hover:shadow-2xl hover:shadow-secondary/5 transition-all duration-500">
+                        <div class="w-14 h-14 bg-cyan-50 rounded-2xl flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="building-2" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Office Management</h3>
+                        <p class="text-muted font-inter text-sm leading-relaxed mb-5">A complete digital office solution for modern businesses.</p>
+                        <ul class="space-y-1.5">
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Employee & Attendance</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Biometric Integration</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Leave & Salary Management</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Visitor & File Management</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>MIS Reports & Dashboard</li>
                         </ul>
                     </div>
 
-                    <!-- Inventory & Warehouse Management -->
-                    <div class="bg-green-50 p-8 rounded-[2rem] border border-green-100 shadow-sm">
-                        <h3 class="font-outfit font-bold text-2xl text-dark mb-4">Inventory & Warehouse</h3>
-                        <p class="text-muted font-inter text-sm mb-6">Manage your warehouse with real-time stock visibility.</p>
-                        <ul class="space-y-1.5 text-sm text-slate-600 list-disc pl-5 grid grid-cols-2 gap-x-2">
-                            <li>Barcode & QR Code Support</li>
-                            <li>Stock Tracking & Transfer</li>
-                            <li>Purchase & Sales Order</li>
-                            <li>Batch & Expiry Management</li>
-                            <li>Low Stock Alerts</li>
-                            <li>Inventory Reports</li>
+                    <!-- Inventory & Warehouse -->
+                    <div class="group bg-white p-8 rounded-[2rem] border border-gray-100 hover:border-green-400/30 hover:shadow-2xl hover:shadow-green-400/5 transition-all duration-500">
+                        <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="warehouse" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Inventory & Warehouse</h3>
+                        <p class="text-muted font-inter text-sm leading-relaxed mb-5">Real-time stock visibility across your entire warehouse network.</p>
+                        <ul class="space-y-1.5">
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>Barcode & QR Code Support</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>Stock Tracking & Transfer</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>Batch & Expiry Management</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>Purchase & Sales Order</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-green-500 rounded-full"></span>Low Stock Alerts</li>
                         </ul>
                     </div>
 
-                    <!-- Custom Software Development -->
-                    <div class="bg-orange-50 p-8 rounded-[2rem] border border-orange-100 shadow-sm">
-                        <h3 class="font-outfit font-bold text-2xl text-dark mb-4">Custom Software</h3>
-                        <p class="text-muted font-inter text-sm mb-6">Every business is unique, so we build software specifically for your workflow.</p>
-                        <h4 class="font-bold text-sm text-dark mb-3">Industries</h4>
-                        <ul class="space-y-1.5 text-sm text-slate-600 list-disc pl-5 grid grid-cols-2 gap-x-2">
-                            <li>Manufacturing & Mining</li>
-                            <li>Logistics & Warehousing</li>
-                            <li>Construction & Real Estate</li>
-                            <li>Healthcare & Education</li>
-                            <li>Retail & Hospitality</li>
-                            <li>Government & Agriculture</li>
+                    <!-- Custom Software -->
+                    <div class="group bg-white p-8 rounded-[2rem] border border-gray-100 hover:border-accent/30 hover:shadow-2xl hover:shadow-accent/5 transition-all duration-500">
+                        <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center text-accent mb-6 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="code-2" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Custom Software</h3>
+                        <p class="text-muted font-inter text-sm leading-relaxed mb-5">Every business is unique — we build software specifically for your workflow.</p>
+                        <ul class="space-y-1.5">
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>Manufacturing & Mining</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>Logistics & Warehousing</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>Healthcare & Education</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>Retail & Hospitality</li>
+                            <li class="flex items-center gap-2 text-slate-500 text-xs"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span>Government & Agriculture</li>
                         </ul>
                     </div>
                 </div>
 
+                <!-- ROW 3: Web + Mobile + Hardware -->
                 <div class="grid md:grid-cols-3 gap-8">
+
                     <!-- Website Development -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm">
-                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Website Development</h3>
-                        <p class="text-muted text-sm mb-4">Professional, fast, and SEO-friendly websites for Corporate, Manufacturing, Business, Real Estate, E-Commerce, Hospitals, Schools, and Custom Portals.</p>
+                    <div class="group bg-gradient-to-br from-primary to-blue-700 rounded-[2rem] p-10 overflow-hidden relative">
+                        <div class="absolute -top-8 -right-8 w-40 h-40 bg-white/10 rounded-full group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center text-white mb-6 group-hover:rotate-6 transition-transform duration-500">
+                                <i data-lucide="globe" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-outfit font-bold text-2xl text-white mb-3">Website Development</h3>
+                            <p class="text-white/70 font-inter text-sm leading-relaxed mb-6">Professional, fast, and SEO-friendly websites for every business need.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/15 rounded-full text-white text-xs font-medium">Corporate</span>
+                                <span class="px-3 py-1 bg-white/15 rounded-full text-white text-xs font-medium">E-Commerce</span>
+                                <span class="px-3 py-1 bg-white/15 rounded-full text-white text-xs font-medium">Real Estate</span>
+                                <span class="px-3 py-1 bg-white/15 rounded-full text-white text-xs font-medium">Hospital</span>
+                                <span class="px-3 py-1 bg-white/15 rounded-full text-white text-xs font-medium">School</span>
+                                <span class="px-3 py-1 bg-white/15 rounded-full text-white text-xs font-medium">Custom Portal</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Mobile App Development -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm">
-                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Mobile App Development</h3>
-                        <p class="text-muted text-sm mb-4">Develop high-performance mobile applications on platforms like Android, iOS, Flutter, and React Native.</p>
+                    <div class="group bg-gradient-to-br from-slate-800 to-slate-900 rounded-[2rem] p-10 overflow-hidden relative">
+                        <div class="absolute -bottom-8 -left-8 w-40 h-40 bg-secondary/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-1000"></div>
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-secondary/20 rounded-2xl flex items-center justify-center text-secondary mb-6 group-hover:rotate-6 transition-transform duration-500">
+                                <i data-lucide="smartphone" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-outfit font-bold text-2xl text-white mb-3">Mobile App Development</h3>
+                            <p class="text-slate-400 font-inter text-sm leading-relaxed mb-6">High-performance mobile applications built for scale and reliability.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-slate-300 text-xs font-medium">Android</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-slate-300 text-xs font-medium">iOS</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-slate-300 text-xs font-medium">Flutter</span>
+                                <span class="px-3 py-1 bg-white/10 rounded-full text-slate-300 text-xs font-medium">React Native</span>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <!-- Industrial Hardware & Tech Support -->
-                    <div class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm">
-                        <h3 class="font-outfit font-bold text-xl text-dark mb-3">Industrial Hardware & AMC</h3>
-                        <p class="text-muted text-sm mb-4">Connect machines with software for smarter operations (RFID, Scanners, CCTVs, Indicators). 24x7 Technical Assistance, Onsite Installation, and Maintenance.</p>
+
+                    <!-- Industrial Hardware & AMC -->
+                    <div class="group bg-white rounded-[2rem] p-10 border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-500 overflow-hidden relative">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="relative z-10">
+                            <div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-500">
+                                <i data-lucide="cpu" class="w-7 h-7"></i>
+                            </div>
+                            <h3 class="font-outfit font-bold text-2xl text-dark mb-3">Industrial Hardware & AMC</h3>
+                            <p class="text-muted font-inter text-sm leading-relaxed mb-6">Connect machines with software for smarter operations. 24×7 support included.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">RFID Systems</span>
+                                <span class="px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">ANPR Cameras</span>
+                                <span class="px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">Barcode Scanners</span>
+                                <span class="px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">CCTV Integration</span>
+                                <span class="px-3 py-1 bg-primary/10 rounded-full text-primary text-xs font-medium">AMC</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Industries We Serve -->
-                <div class="bg-slate-100 p-8 rounded-[2rem] text-center">
-                    <h3 class="font-outfit font-bold text-xl text-dark mb-4">Industries We Serve</h3>
-                    <p class="text-primary font-inter font-medium leading-relaxed">
-                        Mining &bull; Stone Crusher &bull; Cement &bull; Steel &bull; Power Plant &bull; Warehouse &bull; Logistics &bull; Manufacturing &bull; Agriculture &bull; Construction &bull; FMCG &bull; Government &bull; Ports &bull; Chemical &bull; Food Processing &bull; Textile &bull; Pharmaceuticals &bull; Infrastructure &bull; Transport &bull; Retail
-                    </p>
+                <!-- ROW 4: Industries We Serve (marquee style) -->
+                <div class="bg-slate-900 rounded-[2rem] p-10 overflow-hidden relative">
+                    <div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+                    <div class="relative z-10 text-center mb-8">
+                        <h3 class="font-outfit font-bold text-2xl text-white mb-2">Industries We Serve</h3>
+                        <p class="text-slate-400 font-inter text-sm">Trusted across 20+ industry verticals in India</p>
+                    </div>
+                    <div class="relative z-10 flex flex-wrap justify-center gap-3">
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Mining</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Stone Crusher</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Cement</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Steel</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Power Plant</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Warehouse</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Logistics</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Manufacturing</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Agriculture</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Construction</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">FMCG</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Government</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Ports</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Chemical</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Food Processing</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Textile</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Pharmaceuticals</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Infrastructure</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Transport</span>
+                        <span class="px-4 py-2 bg-white/10 hover:bg-primary/30 border border-white/10 hover:border-primary/50 rounded-full text-slate-300 hover:text-white text-sm font-medium transition-all duration-300 cursor-default">Retail</span>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
