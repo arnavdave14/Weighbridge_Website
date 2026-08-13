@@ -226,12 +226,11 @@ function initUI() {
         const isActive = navLinks.classList.toggle('active');
         
         // Toggle Icon between Menu and X
-        const icon = menuToggle.querySelector('i');
         if (isActive) {
-            icon.setAttribute('data-lucide', 'x');
+            menuToggle.innerHTML = '<i class="w-7 h-7" data-lucide="x"></i>';
             document.body.style.overflow = 'hidden'; // Prevent scroll
         } else {
-            icon.setAttribute('data-lucide', 'menu');
+            menuToggle.innerHTML = '<i class="w-7 h-7" data-lucide="menu"></i>';
             document.body.style.overflow = ''; // Restore scroll
         }
         lucide.createIcons();
