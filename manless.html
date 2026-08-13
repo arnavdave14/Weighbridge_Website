@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weighbridge Software Solutions | Aaravya Technology</title>
+<meta content="Complete Weighbridge Software Suite — Standard, Manless, SAP Integration, ANPR &amp; Cloud Dashboard. Trusted by Mining, Cement, Steel &amp; 20+ industries across India." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0891b2',
+                        accent: '#e11d48',
+                        dark: '#0f172a',
+                        muted: '#64748b',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Styles -->
+<link href="css/style.css" rel="stylesheet"/>
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* Tab Styles */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+        }
+        .tab-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39);
+        }
+        
+        /* FAQ Styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .faq-answer.open {
+            max-height: 300px; /* arbitrary large max-height */
+            opacity: 1;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-inter selection:bg-primary/30 selection:text-primary">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="w-full h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200 px-8 md:px-16 flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-4 cursor-pointer group" onclick="window.location.href='index.html'">
+<img alt="Aaravya Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500" src="assets/images/logo.png"/>
+<div class="flex flex-col">
+<span class="font-outfit font-black text-2xl tracking-tighter text-slate-900 leading-none">AARAVYA</span>
+<span class="font-inter font-bold text-[10px] tracking-[0.2em] text-primary uppercase leading-none mt-1">Enterprises</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-slate-200 bg-white text-slate-600 font-outfit font-bold text-sm hover:border-primary hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/30 transition-all duration-300" href="index.html">
+<i class="w-4 h-4" data-lucide="arrow-left"></i>
+                Back to Home
+            </a>
+</div>
+</nav>
+<!-- Futuristic Split Hero Section -->
+<section class="relative pt-40 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-900 border-b border-slate-800 min-h-[80vh] flex items-center">
+<!-- Deep Dark Grid Background -->
+<div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+<!-- Glowing Orbs -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 relative z-10 w-full animate-fade-in-up">
+<div class="flex items-center gap-3 mb-8 text-sm font-bold text-slate-400 tracking-wide uppercase">
+<a class="hover:text-primary transition-colors" href="index.html">Home</a>
+<span class="text-slate-600">/</span>
+<span class="text-primary">Enterprise Software</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Left Content -->
+<div>
+<div class="flex flex-wrap gap-4 mb-8">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-blue-400 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+<span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]"></span> Flagship Product
+                        </span>
+</div>
+<h1 class="font-outfit font-black text-5xl md:text-7xl text-white leading-[1.05] mb-6 tracking-tight">
+                        Manless<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Automation.</span>
+</h1>
+<p class="font-inter text-slate-400 text-lg md:text-xl max-w-xl leading-relaxed mb-10">
+                        The software takes full control of your hardware ecosystem to execute weighments completely autonomously, 24/7 without human intervention.
+                    </p>
+<div class="flex flex-wrap gap-5">
+<a class="px-8 py-4 bg-primary text-white rounded-xl font-outfit font-bold hover:bg-blue-600 hover:shadow-[0_10px_40px_rgba(37,99,235,0.4)] transition-all duration-500 transform hover:-translate-y-1 flex items-center gap-2 border border-primary" href="index.html#contact">
+<i class="w-5 h-5" data-lucide="zap"></i> Request Demo
+                        </a>
+<a class="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-outfit font-bold hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-md" href="#deep-dive">
+                            Explore Features <i class="w-5 h-5 text-slate-400" data-lucide="arrow-down"></i>
+</a>
+</div>
+</div>
+<!-- Right Visual -->
+<div class="relative hidden lg:block perspective-1000">
+<div class="relative bg-slate-800/50 border border-slate-700/50 rounded-3xl p-4 shadow-2xl backdrop-blur-xl transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 ease-out">
+<img alt="Manless Automation Flow" class="rounded-2xl w-full h-[400px] object-cover opacity-90 mix-blend-screen" src="assets/images/manless-hero-flow.png"/>
+<!-- Floating Glass Cards -->
+<div class="absolute -left-12 top-10 bg-slate-900/80 border border-slate-700 p-4 rounded-xl backdrop-blur-md shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+<div class="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-500">
+<i class="w-5 h-5" data-lucide="check"></i>
+</div>
+<div>
+<div class="text-white font-bold text-sm">Truck Verified</div>
+<div class="text-slate-400 text-xs">ANPR Matched</div>
+</div>
+</div>
+<div class="absolute -right-10 bottom-10 bg-slate-900/80 border border-slate-700 p-4 rounded-xl backdrop-blur-md shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">
+<div class="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-400">
+<i class="w-5 h-5" data-lucide="lock"></i>
+</div>
+<div>
+<div class="text-white font-bold text-sm">Weight Locked</div>
+<div class="text-slate-400 text-xs">42,550 KG</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Stats Bar (Dark Theme) -->
+<div class="border-b border-slate-800 bg-slate-900 relative z-20">
+<div class="max-w-7xl mx-auto px-4 py-12 relative">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-slate-800">
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-blue-400">99.9</span>%</div>
+<div class="text-slate-300 font-bold mb-1">Uptime SLA</div>
+<div class="text-slate-500 text-sm">Cloud architecture ensuring zero data loss during offline periods.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3">&lt;<span class="text-blue-400">60</span>s</div>
+<div class="text-slate-300 font-bold mb-1">Turnaround Time</div>
+<div class="text-slate-500 text-sm">Lightning fast weighments including ANPR scan and ERP sync.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-blue-400">100</span>%</div>
+<div class="text-slate-300 font-bold mb-1">Fraud Prevention</div>
+<div class="text-slate-500 text-sm">Structural elimination of ghost trips and manual overrides.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-blue-400">3</span>hr</div>
+<div class="text-slate-300 font-bold mb-1">Deployment Time</div>
+<div class="text-slate-500 text-sm">Plug &amp; play architecture works with your existing hardware.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Deep Dive Interactive Tabs -->
+<!-- Deep Dive: Manless Operations -->
+<section class="py-32 relative overflow-hidden bg-slate-50" id="deep-dive">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-600 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="bot"></i> Autonomous Execution
+                </span>
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">How Manless Weighing Works.</h2>
+<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">A completely touchless, operator-free workflow that accelerates throughput and eliminates human error.</p>
+</div>
+<!-- Premium Vertical Timeline -->
+<div class="relative max-w-4xl mx-auto mb-24 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+<!-- Step 1 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gsap-reveal mb-12">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<i class="w-5 h-5" data-lucide="scan-line"></i>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group-hover:shadow-xl transition-all transform md:group-odd:hover:-translate-x-2 md:group-even:hover:translate-x-2">
+<h4 class="font-outfit font-bold text-xl text-slate-900 mb-2">1. RFID Tag Registration</h4>
+<p class="text-slate-600 text-sm">The system scans for an RFID tag. If unregistered, the process exits. If verified, the entry boom barrier opens and the traffic light signals the vehicle to enter.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gsap-reveal mb-12">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-indigo-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<i class="w-5 h-5" data-lucide="volume-2"></i>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group-hover:shadow-xl transition-all transform md:group-odd:hover:-translate-x-2 md:group-even:hover:translate-x-2">
+<h4 class="font-outfit font-bold text-xl text-slate-900 mb-2">2. Automated Audio Guidance</h4>
+<p class="text-slate-600 text-sm">Automated audio plays to guide the vehicle inside the ultrasonic sensor zone, then provides precise instructions to set the vehicle perfectly on the deck.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gsap-reveal mb-12">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-amber-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<i class="w-5 h-5" data-lucide="hand"></i>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group-hover:shadow-xl transition-all transform md:group-odd:hover:-translate-x-2 md:group-even:hover:translate-x-2">
+<h4 class="font-outfit font-bold text-xl text-slate-900 mb-2">3. Manual Driver Confirmation</h4>
+<p class="text-slate-600 text-sm">Once aligned, the system announces in the selected language asking the driver to step out and manually press the physical push button to confirm.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gsap-reveal mb-12">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-emerald-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<i class="w-5 h-5" data-lucide="camera"></i>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group-hover:shadow-xl transition-all transform md:group-odd:hover:-translate-x-2 md:group-even:hover:translate-x-2">
+<h4 class="font-outfit font-bold text-xl text-slate-900 mb-2">4. Weighment &amp; Image Capture</h4>
+<p class="text-slate-600 text-sm">The system immediately records the gross/tare weight and captures security images. The recorded weight is instantly shown on the LED display.</p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gsap-reveal mb-12">
+<div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-800 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+<i class="w-5 h-5" data-lucide="door-open"></i>
+</div>
+<div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-3xl border border-slate-200 shadow-sm group-hover:shadow-xl transition-all transform md:group-odd:hover:-translate-x-2 md:group-even:hover:translate-x-2">
+<h4 class="font-outfit font-bold text-xl text-slate-900 mb-2">5. Automated Exit</h4>
+<p class="text-slate-600 text-sm">The exit boom barrier opens and a final audio message plays: "Please exit your vehicle, thank you," completing the weighment cycle.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-slate-900 rounded-3xl p-10 text-white shadow-xl gsap-reveal">
+<i class="w-12 h-12 text-red-400 mb-6" data-lucide="shield-alert"></i>
+<h3 class="font-outfit font-bold text-3xl mb-4">Anti-Fraud Lockout</h3>
+<p class="text-slate-400 leading-relaxed mb-6">If the positioning sensors detect a wheel is off the platform, or if multiple vehicles try to weigh together, the system physically locks out. The barrier stays down, and an alert is sent to security.</p>
+</div>
+<div class="bg-indigo-600 rounded-3xl p-10 text-white shadow-xl gsap-reveal">
+<i class="w-12 h-12 text-indigo-300 mb-6" data-lucide="mic"></i>
+<h3 class="font-outfit font-bold text-3xl mb-4">Multi-Lingual Voice</h3>
+<p class="text-indigo-100 leading-relaxed mb-6">Built-in PA integration plays automated audio prompts in the local language (e.g. Hindi, English, Marathi). "Please move forward", "Weighment complete, collect slip".</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs -->
+<section class="py-32 relative overflow-hidden bg-white border-y border-slate-200" id="tech-specs">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Hardware Integration Array.</h2>
+<p class="text-slate-600 text-lg max-w-2xl mx-auto">We connect seamlessly with the industry's best automation hardware via Modbus, TCP/IP, and Serial.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto gsap-reveal">
+<div class="border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+<h4 class="font-bold text-slate-900 mb-2 border-b border-slate-100 pb-2">Identification</h4>
+<ul class="space-y-2 text-sm text-slate-600">
+<li>• UHF Long Range RFID (8-12m)</li>
+<li>• ANPR (License Plate Recognition)</li>
+<li>• Smart Card Readers (Mifare)</li>
+<li>• Manual Driver Push Button</li>
+</ul>
+</div>
+<div class="border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+<h4 class="font-bold text-slate-900 mb-2 border-b border-slate-100 pb-2">Traffic &amp; Positioning</h4>
+<ul class="space-y-2 text-sm text-slate-600">
+<li>• Industrial Boom Barriers</li>
+<li>• Red/Green Traffic Lights</li>
+<li>• Ultrasonic Sensors</li>
+<li>• Loop Detectors</li>
+</ul>
+</div>
+<div class="border border-slate-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
+<h4 class="font-bold text-slate-900 mb-2 border-b border-slate-100 pb-2">Driver Interface</h4>
+<ul class="space-y-2 text-sm text-slate-600">
+<li>• Rugged Touch Kiosk (IP65)</li>
+<li>• High-Speed Thermal Printer</li>
+<li>• Large LED Remote Display</li>
+<li>• PA Audio System/Amplifier</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 relative overflow-hidden bg-slate-50" id="faq">
+<div class="max-w-4xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-4">Automation FAQs</h2>
+</div>
+<div class="space-y-4 gsap-reveal">
+<div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">What happens if a driver needs help?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">The driver kiosk includes an intercom/SIP phone button. Pressing it connects them directly to central security or the remote weighbridge admin.</p>
+</div>
+</div>
+<div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">Can we use our existing boom barriers?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">Yes! If your existing barriers have standard NO/NC dry relay contacts, our relay controller board can easily integrate with them.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery -->
+<section class="py-24 relative overflow-hidden bg-white border-t border-slate-200" id="gallery">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-6">Manless Deployments.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 gsap-reveal">
+<div class="rounded-2xl overflow-hidden shadow-md h-[300px] group relative cursor-pointer" onclick="openLightbox('assets/images/manless-1.png', 'Authentication Required', '')">
+<img alt="Authentication Required" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/images/manless-1.png"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+<i class="w-5 h-5" data-lucide="zoom-in"></i>
+</div>
+<h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Authentication Required</h4>
+</div></div>
+<div class="rounded-2xl overflow-hidden shadow-md h-[300px] group relative cursor-pointer" onclick="openLightbox('assets/images/manless-2.png', 'Dashboard', '')">
+<img alt="Dashboard" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/images/manless-2.png"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+<i class="w-5 h-5" data-lucide="zoom-in"></i>
+</div>
+<h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Dashboard</h4>
+</div></div>
+<div class="rounded-2xl overflow-hidden shadow-md h-[300px] group relative cursor-pointer" onclick="openLightbox('assets/images/manless-3.png', 'Flow', '')">
+<img alt="Flow" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="assets/images/manless-3.png"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+<i class="w-5 h-5" data-lucide="zoom-in"></i>
+</div>
+<h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Flow</h4>
+</div></div>
+</div>
+</div>
+</section>
+<!-- Modern Premium CTA -->
+<section class="py-24 relative overflow-hidden bg-white">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-indigo-100 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-xl text-center gsap-reveal">
+<!-- Abstract glowing orbs -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-[3rem]">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[100%] bg-primary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+<div class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[100%] bg-secondary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="font-outfit font-black text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight">Ready to upgrade your weighbridge?</h2>
+<p class="text-slate-600 text-xl mb-10 leading-relaxed">Join 500+ enterprise plants that have eliminated fraud and accelerated their operations with Aaravya.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white rounded-xl font-outfit font-bold text-lg hover:bg-blue-600 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300" href="index.html#contact">
+<i class="w-6 h-6" data-lucide="phone"></i> Request Free Demo
+                        </a>
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-700 border border-slate-200 shadow-sm rounded-xl font-outfit font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 backdrop-blur-md" href="index.html#contact">
+                            Speak to Sales
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 py-10 text-center">
+<div class="max-w-7xl mx-auto px-4">
+<p class="text-slate-500 text-sm">© 2026 Aaravya Technology Pvt. Ltd.  ·  <a class="text-primary hover:underline" href="index.html">Back to Home</a>  ·  <a class="text-primary hover:underline" href="index.html#contact">Contact Us</a></p>
+</div>
+</footer>
+<!-- Init Scripts -->
+<script>
+        // Init Lucide Icons
+        if(typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const revealElements = document.querySelectorAll(".gsap-reveal");
+            
+            revealElements.forEach((element) => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId, btn) {
+            // Remove active from all tabs and btns
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Add active to targeted
+            document.getElementById('tab-' + tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(item) {
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-answer').classList.remove('open');
+            });
+
+            // Toggle clicked FAQ
+            if (!isActive) {
+                item.classList.add('active');
+                answer.classList.add('open');
+            }
+        }
+    </script>
+<!-- Lightbox Modal -->
+<div class="fixed inset-0 z-[100] bg-[#020617]/95 backdrop-blur-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500" id="gallery-lightbox">
+<button class="absolute top-6 right-6 lg:top-10 lg:right-10 w-14 h-14 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-500 z-50 cursor-pointer hover:rotate-90 hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]" onclick="closeLightbox()">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+<!-- Navigation Arrows -->
+<button class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:-translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="prevLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<button class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="nextLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+<div class="max-w-7xl w-full mx-16 lg:mx-24 relative transform scale-95 translate-y-12 opacity-0 transition-all duration-700 ease-out flex flex-col lg:flex-row items-center gap-8 lg:gap-16" id="lightbox-content-box">
+<!-- Image Container -->
+<div class="w-full lg:w-2/3 relative rounded-[2rem] p-2 bg-gradient-to-br from-white/20 to-white/0 border border-white/10 shadow-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-blue-500/20 blur-[100px] -z-10 group-hover:bg-blue-400/30 transition-colors duration-700"></div>
+<img alt="Gallery Preview" class="w-full h-auto max-h-[70vh] object-contain rounded-[1.5rem] shadow-2xl bg-black/60 transition-opacity duration-300" id="lightbox-img" src=""/>
+</div>
+<!-- Details Container -->
+<div class="w-full lg:w-1/3 flex flex-col justify-center text-left">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 font-bold text-xs uppercase tracking-widest mb-6 w-max">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="m14.31 8 5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="m7.38 12 5.74-9.94"></path><path d="M9.69 16 3.95 6.06"></path><path d="M14.31 16H2.83"></path><path d="m16.62 12-5.74 9.94"></path></svg> Gallery View
+                </div>
+<h3 class="font-outfit font-black text-4xl lg:text-5xl text-white mb-6 leading-tight transition-opacity duration-300" id="lightbox-title"></h3>
+<div class="w-12 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-6"></div>
+<p class="text-slate-400 text-lg lg:text-xl font-inter leading-relaxed max-w-lg transition-opacity duration-300" id="lightbox-desc"></p>
+</div>
+</div>
+</div>
+<script>
+        let currentGalleryIndex = 0;
+        let galleryItems = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('[onclick^="openLightbox("]');
+            galleryItems = Array.from(triggers).map((el, index) => {
+                const onclickStr = el.getAttribute('onclick');
+                const matches = onclickStr.match(/'([^']*)'/g);
+                if (matches && matches.length >= 3) {
+                    el.removeAttribute('onclick');
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openLightboxByIndex(index);
+                    });
+                    return {
+                        src: matches[0].replace(/'/g, ''),
+                        title: matches[1].replace(/'/g, ''),
+                        desc: matches[2].replace(/'/g, '')
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+        });
+
+        function openLightboxByIndex(index) {
+            if (galleryItems.length === 0) return;
+            
+            if (index < 0) index = galleryItems.length - 1;
+            if (index >= galleryItems.length) index = 0;
+            
+            currentGalleryIndex = index;
+            const item = galleryItems[index];
+            
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const desc = document.getElementById('lightbox-desc');
+            
+            if (!lightbox.classList.contains('pointer-events-none')) {
+                img.style.opacity = '0';
+                title.style.opacity = '0';
+                desc.style.opacity = '0';
+                
+                setTimeout(() => {
+                    img.src = item.src;
+                    title.textContent = item.title;
+                    desc.textContent = item.desc;
+                    
+                    img.style.opacity = '1';
+                    title.style.opacity = '1';
+                    desc.style.opacity = '1';
+                }, 300);
+            } else {
+                img.src = item.src;
+                title.textContent = item.title;
+                desc.textContent = item.desc;
+                
+                img.style.opacity = '1';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+                
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    contentBox.classList.remove('scale-95', 'translate-y-12', 'opacity-0');
+                    contentBox.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                }, 50);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function nextLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex + 1);
+        }
+
+        function prevLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex - 1);
+        }
+
+        function openLightbox(imgSrc, title, desc) {
+            const idx = galleryItems.findIndex(i => i.src === imgSrc);
+            if (idx !== -1) {
+                openLightboxByIndex(idx);
+            } else {
+                galleryItems.push({src: imgSrc, title, desc});
+                openLightboxByIndex(galleryItems.length - 1);
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            
+            contentBox.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            contentBox.classList.add('scale-95', 'translate-y-12', 'opacity-0');
+            
+            setTimeout(() => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }, 400); 
+        }
+
+        document.getElementById('gallery-lightbox').addEventListener('click', function(e) {
+            if (e.target === this || e.target.id === 'lightbox-content-box') {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('gallery-lightbox').classList.contains('pointer-events-none')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+            }
+        });
+    </script>
+</body>
+</html>

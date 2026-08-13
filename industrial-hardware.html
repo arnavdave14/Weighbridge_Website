@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Weighbridge Software Solutions | Aaravya Technology</title>
+    <meta
+        content="Complete Weighbridge Software Suite — Standard, Manless, SAP Integration, ANPR &amp; Cloud Dashboard. Trusted by Mining, Cement, Steel &amp; 20+ industries across India."
+        name="description" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0891b2',
+                        accent: '#e11d48',
+                        dark: '#0f172a',
+                        muted: '#64748b',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Styles -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(400%);
+            }
+        }
+
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Tab Styles */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+        }
+
+        .tab-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+        }
+
+        /* FAQ Styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+            /* arbitrary large max-height */
+            opacity: 1;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-inter selection:bg-primary/30 selection:text-primary">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+        <div
+            class="w-full h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200 px-8 md:px-16 flex justify-between items-center shadow-sm">
+            <div class="flex items-center gap-4 cursor-pointer group" onclick="window.location.href='index.html'">
+                <img alt="Aaravya Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500"
+                    src="assets/images/logo.png" />
+                <div class="flex flex-col">
+                    <span
+                        class="font-outfit font-black text-2xl tracking-tighter text-slate-900 leading-none">AARAVYA</span>
+                    <span
+                        class="font-inter font-bold text-[10px] tracking-[0.2em] text-primary uppercase leading-none mt-1">Enterprises</span>
+                </div>
+            </div>
+            <a class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-slate-200 bg-white text-slate-600 font-outfit font-bold text-sm hover:border-primary hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/30 transition-all duration-300"
+                href="index.html">
+                <i class="w-4 h-4" data-lucide="arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </nav>
+    <!-- Rugged Industrial Hero Section -->
+    <section class="relative pt-48 pb-32 overflow-hidden bg-slate-900 min-h-[85vh] flex items-center">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0">
+            <img alt="Industrial Hardware" class="w-full h-full object-cover opacity-30 mix-blend-luminosity"
+                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&amp;w=2000&amp;auto=format&amp;fit=crop" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/50 to-transparent"></div>
+        </div>
+        <!-- Glowing Accents -->
+        <div
+            class="absolute -top-40 left-0 w-[500px] h-[500px] bg-yellow-500/20 blur-[150px] rounded-full pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10 w-full animate-fade-in-up">
+            <div class="flex items-center gap-3 mb-8 text-sm font-bold text-slate-400 tracking-wide uppercase">
+                <a class="hover:text-yellow-500 transition-colors" href="index.html">Home</a>
+                <span class="text-slate-600">/</span>
+                <span class="text-yellow-500">Enterprise Hardware</span>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7">
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <span
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                            <i class="w-3 h-3" data-lucide="shield"></i> IP68 Rated
+                        </span>
+                        <span
+                            class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                            Extreme Weather Ready
+                        </span>
+                    </div>
+                    <h1
+                        class="font-outfit font-black text-6xl md:text-8xl text-white leading-[1.0] mb-8 tracking-tight uppercase">
+                        Built to <br />
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-500">Outlast.</span>
+                    </h1>
+                    <p
+                        class="font-inter text-slate-400 text-xl max-w-2xl leading-relaxed mb-10 border-l-4 border-yellow-500 pl-6">
+                        Heavy-duty boom barriers, ANPR cameras, RFID readers, and positioning sensors built to withstand
+                        extreme dust, heat, and 24/7 operations in the toughest environments.
+                    </p>
+                    <div class="flex flex-wrap gap-5">
+                        <a class="px-8 py-4 bg-yellow-500 text-slate-900 rounded-xl font-outfit font-black uppercase hover:bg-yellow-400 hover:shadow-[0_0_40px_rgba(234,179,8,0.4)] transition-all duration-500 transform hover:-translate-y-1 flex items-center gap-2"
+                            href="index.html#contact">
+                            <i class="w-5 h-5" data-lucide="hammer"></i> View Catalog
+                        </a>
+                        <a class="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-xl font-outfit font-bold hover:bg-white/10 transition-all duration-300 flex items-center gap-2 backdrop-blur-md"
+                            href="#deep-dive">
+                            Hardware Specs <i class="w-5 h-5 text-slate-400" data-lucide="arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative hidden lg:block">
+                    <!-- Technical Drawing Style Element -->
+                    <div
+                        class="relative bg-slate-800/80 border border-slate-700 p-8 rounded-3xl backdrop-blur-md shadow-2xl">
+                        <div
+                            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9zdmc+')] opacity-50">
+                        </div>
+                        <div class="relative z-10 flex flex-col gap-6">
+                            <div
+                                class="flex items-center gap-4 p-4 bg-slate-900/50 rounded-xl border border-slate-700 hover:bg-slate-800 transition-colors">
+                                <div
+                                    class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center text-yellow-500">
+                                    <i class="w-6 h-6" data-lucide="camera"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold">Industrial ANPR</div>
+                                    <div class="text-slate-400 text-sm">99.8% Accuracy at Night</div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-4 p-4 bg-slate-900/50 rounded-xl border border-slate-700 hover:bg-slate-800 transition-colors">
+                                <div
+                                    class="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center text-orange-500">
+                                    <i class="w-6 h-6" data-lucide="crosshair"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold">Positioning Sensors</div>
+                                    <div class="text-slate-400 text-sm">Infrared Grid Array</div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center gap-4 p-4 bg-slate-900/50 rounded-xl border border-slate-700 hover:bg-slate-800 transition-colors">
+                                <div
+                                    class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center text-red-500">
+                                    <i class="w-6 h-6" data-lucide="alert-triangle"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-bold">Heavy-Duty Boom Barrier</div>
+                                    <div class="text-slate-400 text-sm">3 Million Cycles MTBF</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Detailed Stats Bar (Dark) -->
+    <div class="border-b border-slate-800 bg-slate-950 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 py-12 relative">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-slate-800">
+                <div class="text-center px-4 gsap-reveal">
+                    <div class="font-outfit font-black text-5xl text-white mb-3"><span
+                            class="text-yellow-500">IP68</span></div>
+                    <div class="text-slate-300 font-bold mb-1">Weather Rating</div>
+                    <div class="text-slate-500 text-sm">Fully dust-proof and water resistant components.</div>
+                </div>
+                <div class="text-center px-4 gsap-reveal">
+                    <div class="font-outfit font-black text-5xl text-white mb-3"><span
+                            class="text-yellow-500">3M</span>+</div>
+                    <div class="text-slate-300 font-bold mb-1">Operation Cycles</div>
+                    <div class="text-slate-500 text-sm">Tested for high-frequency continuous operations.</div>
+                </div>
+                <div class="text-center px-4 gsap-reveal">
+                    <div class="font-outfit font-black text-5xl text-white mb-3"><span
+                            class="text-yellow-500">-20</span>°C</div>
+                    <div class="text-slate-300 font-bold mb-1">Temp Tolerance</div>
+                    <div class="text-slate-500 text-sm">Operates from freezing cold up to +60°C heat.</div>
+                </div>
+                <div class="text-center px-4 gsap-reveal">
+                    <div class="font-outfit font-black text-5xl text-white mb-3"><span
+                            class="text-yellow-500">5</span>yr</div>
+                    <div class="text-slate-300 font-bold mb-1">Warranty</div>
+                    <div class="text-slate-500 text-sm">Comprehensive warranty on all industrial components.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Deep Dive: Industrial Hardware -->
+    <section class="py-32 relative overflow-hidden bg-slate-50" id="deep-dive">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-600 font-bold text-xs uppercase tracking-widest mb-6">
+                    <i class="w-4 h-4" data-lucide="cpu"></i> Rugged Hardware Ecosystem
+                </span>
+                <h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Built for the harshest
+                    environments.</h2>
+                <p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">Our hardware components are
+                    IP68-rated and designed to withstand heavy dust, extreme temperatures, and continuous vibrations in
+                    industrial plants.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20 gsap-reveal">
+                <div class="order-2 md:order-1">
+                    <h3 class="font-outfit font-bold text-3xl text-slate-900 mb-6">The Smart Kiosk Terminal</h3>
+                    <p class="text-slate-600 leading-relaxed mb-6">Replace the traditional operator cabin with a fully
+                        automated, unmanned driver kiosk. Features a heavy-duty touchscreen and built-in thermal
+                        printer.</p>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                                <i class="w-4 h-4" data-lucide="sun"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Sunlight Readable Display</h4>
+                                <p class="text-slate-600 text-sm mt-1">1000-nit high-brightness screen ensures drivers
+                                    can see instructions even in direct afternoon sunlight.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                                <i class="w-4 h-4" data-lucide="shield"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">IP65 Weatherproof Enclosure</h4>
+                                <p class="text-slate-600 text-sm mt-1">Powder-coated MS/SS enclosure protects internal
+                                    electronics from rain, dust, and corrosive chemicals.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-amber-500/5 blur-2xl rounded-full"></div>
+                        <div class="grid grid-cols-2 gap-4 relative z-10">
+                            <div class="bg-white p-2 rounded-3xl border border-slate-200 shadow-xl h-64 md:h-80 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
+                                <img alt="Hardware Testing" class="rounded-2xl w-full h-full object-cover"
+                                    src="assets/images/hardware-testing.jpg" />
+                            </div>
+                            <div class="bg-white p-2 rounded-3xl border border-slate-200 shadow-xl h-64 md:h-80 transform translate-y-8 rotate-3 hover:rotate-0 transition-transform duration-500">
+                                <img alt="Hardware Wiring" class="rounded-2xl w-full h-full object-cover"
+                                    src="assets/images/hardware-wiring.jpg" />
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-2 -left-6 bg-slate-900 text-white p-4 rounded-xl shadow-lg z-20 animate-bounce"
+                            style="animation-duration: 3s;">
+                            <div class="flex items-center gap-3">
+                                <i class="w-5 h-5 text-amber-400" data-lucide="printer"></i>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-300">Auto-cut Thermal Printer</div>
+                                    <div class="text-sm font-bold">Fast Ticket Dispensing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Connected Hardware Grid -->
+    <section class="py-32 relative overflow-hidden bg-white border-y border-slate-200" id="hardware">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Integrated Peripherals</h2>
+                <p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">Aaravya software directly interfaces
+                    with these hardware devices via TCP/IP or Serial ports to orchestrate the entire weighment flow.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 gsap-reveal">
+                <!-- IP Cameras -->
+                <div
+                    class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-blue-500 hover:shadow-lg transition-all group cursor-pointer">
+                    <div
+                        class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-6 h-6 text-blue-600" data-lucide="camera"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-xl mb-2">ANPR IP Cameras</h3>
+                    <p class="text-slate-600 text-sm">Automatic Number Plate Recognition cameras read truck plates to
+                        trigger the workflow automatically without RFID.</p>
+                </div>
+                <!-- Boom Barriers -->
+                <div
+                    class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-red-500 hover:shadow-lg transition-all group cursor-pointer">
+                    <div
+                        class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-6 h-6 text-red-600 transform rotate-45" data-lucide="minus"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-xl mb-2">Boom Barriers</h3>
+                    <p class="text-slate-600 text-sm">Heavy-duty fast-opening barriers prevent unauthorized entry and
+                        exit from the weighbridge platform.</p>
+                </div>
+                <!-- Positioning Sensors -->
+                <div
+                    class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-emerald-500 hover:shadow-lg transition-all group cursor-pointer">
+                    <div
+                        class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-6 h-6 text-emerald-600" data-lucide="scan"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-xl mb-2">Infrared Sensors</h3>
+                    <p class="text-slate-600 text-sm">Photoelectric beam sensors placed at the edges of the platform to
+                        detect incorrect truck positioning.</p>
+                </div>
+                <!-- Traffic Lights -->
+                <div
+                    class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover:border-amber-500 hover:shadow-lg transition-all group cursor-pointer">
+                    <div
+                        class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-6 h-6 text-amber-500" data-lucide="circle-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-xl mb-2">Traffic Lights</h3>
+                    <p class="text-slate-600 text-sm">High-visibility LED Red/Green signals direct truck traffic and
+                        enforce queueing discipline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- RFID & ANPR Integration Section -->
+    <section class="py-32 relative overflow-hidden bg-white border-t border-slate-200" id="integration-section">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="gsap-reveal">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-bold uppercase tracking-widest mb-6">
+                        <i class="w-3 h-3" data-lucide="cpu"></i> Smart Verification
+                    </div>
+                    <h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">RFID &amp; ANPR <span
+                            class="text-secondary">Integration.</span></h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        Vehicle walks in, the system already knows who it is. Our advanced software tightly integrates
+                        with ANPR cameras and RFID readers to identify trucks instantly.
+                        No manual entry, zero room for fraud.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="w-4 h-4" data-lucide="check"></i></div>
+                            <span class="text-slate-700 font-medium">Sub-second vehicle verification.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="w-4 h-4" data-lucide="check"></i></div>
+                            <span class="text-slate-700 font-medium">Automated gross and tare associations.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="w-4 h-4" data-lucide="check"></i></div>
+                            <span class="text-slate-700 font-medium">Seamless sync with centralized ERP data.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative gsap-reveal">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-secondary/10 to-primary/10 rounded-3xl transform rotate-3 scale-105">
+                    </div>
+                    <img alt="RFID and ANPR Integration"
+                        class="relative rounded-2xl shadow-2xl object-cover w-full h-[400px]"
+                        src="assets/images/io-panel-2-0.png" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intelligent I/O Control Panel Section -->
+    <section class="py-32 relative overflow-hidden bg-slate-50 border-t border-slate-200" id="io-control-panel">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 text-white rounded-full font-bold text-xs uppercase tracking-widest mb-6">
+                    <i class="w-4 h-4" data-lucide="server"></i> Centralized Processing
+                </span>
+                <h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Intelligent I/O <span
+                        class="text-slate-500">Control Panel.</span></h2>
+                <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                    The absolute "brain" of the manless weighbridge system. Built with isolated SMPS power, dedicated
+                    UART PCB relay boards, and robust Modbus RTU communication, it flawlessly orchestrates all external
+                    field devices.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 gsap-reveal">
+                <!-- Feature 1 -->
+                <div
+                    class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-7 h-7" data-lucide="cpu"></i>
+                    </div>
+                    <h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Modbus RTU Architecture</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Industrial-grade RS-485 serial communication
+                        guarantees secure, instant data transfer between the main UART controller and field I/O modules.
+                    </p>
+                </div>
+                <!-- Feature 2 -->
+                <div
+                    class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-7 h-7" data-lucide="split"></i>
+                    </div>
+                    <h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">8-Channel Expandable I/O</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Handles up to 8 Digital Inputs (Entry,
+                        Weighbridge, Exit sensors) and 8 Digital Outputs (Boom Barriers, Traffic Lights) with spare
+                        channels for future scaling.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div
+                    class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+                    <div
+                        class="w-14 h-14 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="w-7 h-7" data-lucide="shield-alert"></i>
+                    </div>
+                    <h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">High-Voltage Isolation</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm">Features an isolated 220V AC to 12V DC (10A) SMPS
+                        supply and aviation-style weatherproof external connectors, keeping sensitive electronics
+                        perfectly safe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Tech Specs -->
+    <section class="py-32 relative overflow-hidden bg-slate-50" id="tech-specs">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div
+                class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm max-w-4xl mx-auto gsap-reveal">
+                <div class="bg-slate-900 px-6 py-4">
+                    <h3 class="font-outfit font-bold text-xl text-white">Hardware Integration Specs</h3>
+                </div>
+                <table class="w-full text-left border-collapse">
+                    <tbody class="divide-y divide-slate-100 text-sm">
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900 w-1/3">PLC / Controller</td>
+                            <td class="py-4 px-6 text-slate-600">Modbus TCP/RTU compatible IO modules for controlling
+                                barriers and lights.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900">RFID Readers</td>
+                            <td class="py-4 px-6 text-slate-600">UHF Long-Range Readers (up to 12 meters), Wiegand or
+                                TCP/IP interface.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900">Kiosk PC</td>
+                            <td class="py-4 px-6 text-slate-600">Fanless Industrial Panel PC, Intel Core i3/i5, SSD
+                                Storage, Extended Temp Range.</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="py-4 px-6 font-bold text-slate-900">Cabling standard</td>
+                            <td class="py-4 px-6 text-slate-600">Cat6 shielded for network, Armored copper for power and
+                                serial lines.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- Industrial Hardware & AMC Section -->
+    <section class="py-32 relative overflow-hidden bg-white border-t border-slate-200" id="amc-section">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="gsap-reveal">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 text-xs font-bold uppercase tracking-widest mb-6">
+                        <i class="w-3 h-3" data-lucide="shield-check"></i> Complete Protection
+                    </div>
+                    <h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Industrial Hardware
+                        <span class="text-blue-600">&amp; AMC.</span></h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                        We don't just supply robust industrial hardware; we maintain it to ensure zero downtime. Our
+                        Annual Maintenance Contracts (AMC) cover everything from boom barriers to ANPR cameras, giving
+                        you complete peace of mind.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="w-4 h-4" data-lucide="check"></i></div>
+                            <span class="text-slate-700 font-medium">Preventative Maintenance Visits.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="w-4 h-4" data-lucide="check"></i></div>
+                            <span class="text-slate-700 font-medium">24/7 Priority Remote Support.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="w-4 h-4" data-lucide="check"></i></div>
+                            <span class="text-slate-700 font-medium">Fast Hardware Replacements.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative gsap-reveal">
+                    <div
+                        class="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-3xl transform -rotate-3 scale-105">
+                    </div>
+                    <img alt="Industrial Hardware & AMC"
+                        class="relative rounded-2xl shadow-2xl object-cover w-full h-[400px]"
+                        src="assets/images/io-panel-3-0.jpeg" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ Section -->
+    <section class="py-32 relative overflow-hidden bg-white border-t border-slate-200" id="faq">
+        <div class="max-w-4xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="font-outfit font-black text-4xl text-slate-900 mb-4">Hardware FAQs</h2>
+            </div>
+            <div class="space-y-4 gsap-reveal">
+                <div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer"
+                    onclick="toggleFaq(this)">
+                    <div class="p-6 flex justify-between items-center">
+                        <h3 class="font-bold text-slate-900 text-lg">Do you supply the hardware, or just the software?
+                        </h3>
+                        <i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-0">
+                        <p class="text-slate-600 pb-6">We provide turnkey solutions. We supply, install, and integrate
+                            all hardware (Kiosks, Boom Barriers, Sensors) along with the software. However, if you
+                            already have compatible hardware, we can integrate with it.</p>
+                    </div>
+                </div>
+                <div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer"
+                    onclick="toggleFaq(this)">
+                    <div class="p-6 flex justify-between items-center">
+                        <h3 class="font-bold text-slate-900 text-lg">How is the hardware protected from lightning or
+                            power surges?</h3>
+                        <i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer px-6 pb-0">
+                        <p class="text-slate-600 pb-6">All sensitive equipment is routed through industrial-grade
+                            opto-isolators and surge protection devices. We strictly adhere to grounding best practices
+                            during installation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery -->
+    <section class="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-200" id="gallery">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 gsap-reveal">
+                <h2 class="font-outfit font-black text-4xl text-slate-900 mb-6">Hardware Deployments</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:auto-rows-[220px] gsap-reveal">
+                <!-- Large Left (Spans 7 cols, 2 rows) -->
+                <div class="md:col-span-7 md:row-span-2 rounded-2xl overflow-hidden shadow-md group relative cursor-pointer h-[300px] md:h-full"
+                    onclick="openLightbox('assets/images/hardware-testing.jpg', 'Quality Assurance', 'Rigorous hardware testing on the assembly line.')">
+                    <img alt="Quality Assurance"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="assets/images/hardware-testing.jpg" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+                            <i class="w-5 h-5" data-lucide="zoom-in"></i>
+                        </div>
+                        <h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                            Quality Assurance</h4>
+                    </div>
+                </div>
+
+                <!-- Top Right (Spans 5 cols, 1 row) -->
+                <div class="md:col-span-5 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative cursor-pointer h-[250px] md:h-full"
+                    onclick="openLightbox('assets/images/hardware-wiring.jpg', 'Industrial Wiring', 'Secure and organized wiring for heavy-duty deployments.')">
+                    <img alt="Industrial Wiring"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="assets/images/hardware-wiring.jpg" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                            Industrial Wiring</h4>
+                    </div>
+                </div>
+
+                <!-- Middle Right (Spans 5 cols, 1 row) -->
+                <div class="md:col-span-5 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative cursor-pointer h-[250px] md:h-full"
+                    onclick="openLightbox('assets/images/io-panel-0-0.jpeg', 'Control Panel Layout', 'Internal view of the industrial kiosk control panel.')">
+                    <img alt="Control Panel Layout"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="assets/images/io-panel-0-0.jpeg" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                            Control Panel Layout</h4>
+                    </div>
+                </div>
+
+                <!-- Bottom Left (Spans 4 cols, 1 row) -->
+                <div class="md:col-span-4 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative cursor-pointer h-[250px] md:h-full"
+                    onclick="openLightbox('assets/images/security-camera.png', 'Security Camera', 'IP-rated security cameras for automated vehicle tracking.')">
+                    <img alt="Security Camera"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="assets/images/security-camera.png" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                            Security Camera</h4>
+                    </div>
+                </div>
+
+                <!-- Bottom Right (Spans 8 cols, 1 row) -->
+                <div class="md:col-span-8 md:row-span-1 rounded-2xl overflow-hidden shadow-md group relative cursor-pointer h-[250px] md:h-full"
+                    onclick="openLightbox('assets/images/io-panel-4-1.png', 'External Connectors', 'Heavy duty industrial external connectors for harsh environments.')">
+                    <img alt="External Connectors"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        src="assets/images/io-panel-4-1.png" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                            External Connectors</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Modern Premium CTA -->
+    <section class="py-24 relative overflow-hidden bg-white">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div
+                class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-indigo-100 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-xl text-center gsap-reveal">
+                <!-- Abstract glowing orbs -->
+                <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-[3rem]">
+                    <div
+                        class="absolute -top-[20%] -right-[10%] w-[50%] h-[100%] bg-primary/20 blur-[120px] rounded-full mix-blend-multiply">
+                    </div>
+                    <div
+                        class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[100%] bg-secondary/20 blur-[120px] rounded-full mix-blend-multiply">
+                    </div>
+                </div>
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h2 class="font-outfit font-black text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight">Ready to
+                        upgrade your weighbridge?</h2>
+                    <p class="text-slate-600 text-xl mb-10 leading-relaxed">Join 500+ enterprise plants that have
+                        eliminated fraud and accelerated their operations with Aaravya.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white rounded-xl font-outfit font-bold text-lg hover:bg-blue-600 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300"
+                            href="index.html#contact">
+                            <i class="w-6 h-6" data-lucide="phone"></i> Request Free Demo
+                        </a>
+                        <a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-700 border border-slate-200 shadow-sm rounded-xl font-outfit font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 backdrop-blur-md"
+                            href="index.html#contact">
+                            Speak to Sales
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-10 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-slate-500 text-sm">© 2026 Aaravya Technology Pvt. Ltd.  ·  <a
+                    class="text-primary hover:underline" href="index.html">Back to Home</a>  ·  <a
+                    class="text-primary hover:underline" href="index.html#contact">Contact Us</a></p>
+        </div>
+    </footer>
+    <!-- Init Scripts -->
+    <script>
+        // Init Lucide Icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const revealElements = document.querySelectorAll(".gsap-reveal");
+
+            revealElements.forEach((element) => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId, btn) {
+            // Remove active from all tabs and btns
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Add active to targeted
+            document.getElementById('tab-' + tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(item) {
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-answer').classList.remove('open');
+            });
+
+            // Toggle clicked FAQ
+            if (!isActive) {
+                item.classList.add('active');
+                answer.classList.add('open');
+            }
+        }
+    </script>
+    <!-- Lightbox Modal -->
+    <div class="fixed inset-0 z-[100] bg-[#020617]/95 backdrop-blur-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500"
+        id="gallery-lightbox">
+        <button
+            class="absolute top-6 right-6 lg:top-10 lg:right-10 w-14 h-14 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-500 z-50 cursor-pointer hover:rotate-90 hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+            onclick="closeLightbox()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+            </svg>
+        </button>
+        <!-- Navigation Arrows -->
+        <button
+            class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:-translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+            onclick="prevLightboxImage(event)">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="m15 18-6-6 6-6"></path>
+            </svg>
+        </button>
+        <button
+            class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+            onclick="nextLightboxImage(event)">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="m9 18 6-6-6-6"></path>
+            </svg>
+        </button>
+        <div class="max-w-7xl w-full mx-16 lg:mx-24 relative transform scale-95 translate-y-12 opacity-0 transition-all duration-700 ease-out flex flex-col lg:flex-row items-center gap-8 lg:gap-16"
+            id="lightbox-content-box">
+            <!-- Image Container -->
+            <div
+                class="w-full lg:w-2/3 relative rounded-[2rem] p-2 bg-gradient-to-br from-white/20 to-white/0 border border-white/10 shadow-2xl overflow-hidden group">
+                <div
+                    class="absolute inset-0 bg-blue-500/20 blur-[100px] -z-10 group-hover:bg-blue-400/30 transition-colors duration-700">
+                </div>
+                <img alt="Gallery Preview"
+                    class="w-full h-auto max-h-[70vh] object-contain rounded-[1.5rem] shadow-2xl bg-black/60 transition-opacity duration-300"
+                    id="lightbox-img" src="" />
+            </div>
+            <!-- Details Container -->
+            <div class="w-full lg:w-1/3 flex flex-col justify-center text-left">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 font-bold text-xs uppercase tracking-widest mb-6 w-max">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="m14.31 8 5.74 9.94"></path>
+                        <path d="M9.69 8h11.48"></path>
+                        <path d="m7.38 12 5.74-9.94"></path>
+                        <path d="M9.69 16 3.95 6.06"></path>
+                        <path d="M14.31 16H2.83"></path>
+                        <path d="m16.62 12-5.74 9.94"></path>
+                    </svg> Gallery View
+                </div>
+                <h3 class="font-outfit font-black text-4xl lg:text-5xl text-white mb-6 leading-tight transition-opacity duration-300"
+                    id="lightbox-title"></h3>
+                <div class="w-12 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-6"></div>
+                <p class="text-slate-400 text-lg lg:text-xl font-inter leading-relaxed max-w-lg transition-opacity duration-300"
+                    id="lightbox-desc"></p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentGalleryIndex = 0;
+        let galleryItems = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('[onclick^="openLightbox("]');
+            galleryItems = Array.from(triggers).map((el, index) => {
+                const onclickStr = el.getAttribute('onclick');
+                const matches = onclickStr.match(/'([^']*)'/g);
+                if (matches && matches.length >= 3) {
+                    el.removeAttribute('onclick');
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openLightboxByIndex(index);
+                    });
+                    return {
+                        src: matches[0].replace(/'/g, ''),
+                        title: matches[1].replace(/'/g, ''),
+                        desc: matches[2].replace(/'/g, '')
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+        });
+
+        function openLightboxByIndex(index) {
+            if (galleryItems.length === 0) return;
+
+            if (index < 0) index = galleryItems.length - 1;
+            if (index >= galleryItems.length) index = 0;
+
+            currentGalleryIndex = index;
+            const item = galleryItems[index];
+
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const desc = document.getElementById('lightbox-desc');
+
+            if (!lightbox.classList.contains('pointer-events-none')) {
+                img.style.opacity = '0';
+                title.style.opacity = '0';
+                desc.style.opacity = '0';
+
+                setTimeout(() => {
+                    img.src = item.src;
+                    title.textContent = item.title;
+                    desc.textContent = item.desc;
+
+                    img.style.opacity = '1';
+                    title.style.opacity = '1';
+                    desc.style.opacity = '1';
+                }, 300);
+            } else {
+                img.src = item.src;
+                title.textContent = item.title;
+                desc.textContent = item.desc;
+
+                img.style.opacity = '1';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    contentBox.classList.remove('scale-95', 'translate-y-12', 'opacity-0');
+                    contentBox.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                }, 50);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function nextLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex + 1);
+        }
+
+        function prevLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex - 1);
+        }
+
+        function openLightbox(imgSrc, title, desc) {
+            const idx = galleryItems.findIndex(i => i.src === imgSrc);
+            if (idx !== -1) {
+                openLightboxByIndex(idx);
+            } else {
+                galleryItems.push({ src: imgSrc, title, desc });
+                openLightboxByIndex(galleryItems.length - 1);
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+
+            contentBox.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            contentBox.classList.add('scale-95', 'translate-y-12', 'opacity-0');
+
+            setTimeout(() => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }, 400);
+        }
+
+        document.getElementById('gallery-lightbox').addEventListener('click', function (e) {
+            if (e.target === this || e.target.id === 'lightbox-content-box') {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (!document.getElementById('gallery-lightbox').classList.contains('pointer-events-none')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+            }
+        });
+    </script>
+</body>
+
+</html>

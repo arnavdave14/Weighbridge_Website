@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weighbridge Software Solutions | Aaravya Technology</title>
+<meta content="Complete Weighbridge Software Suite — Standard, Manless, SAP Integration, ANPR &amp; Cloud Dashboard. Trusted by Mining, Cement, Steel &amp; 20+ industries across India." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0891b2',
+                        accent: '#e11d48',
+                        dark: '#0f172a',
+                        muted: '#64748b',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Styles -->
+<link href="css/style.css" rel="stylesheet"/>
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* Tab Styles */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+        }
+        .tab-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39);
+        }
+        
+        /* FAQ Styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .faq-answer.open {
+            max-height: 300px; /* arbitrary large max-height */
+            opacity: 1;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-inter selection:bg-primary/30 selection:text-primary">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="w-full h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200 px-8 md:px-16 flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-4 cursor-pointer group" onclick="window.location.href='index.html'">
+<img alt="Aaravya Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500" src="assets/images/logo.png"/>
+<div class="flex flex-col">
+<span class="font-outfit font-black text-2xl tracking-tighter text-slate-900 leading-none">AARAVYA</span>
+<span class="font-inter font-bold text-[10px] tracking-[0.2em] text-primary uppercase leading-none mt-1">Enterprises</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-slate-200 bg-white text-slate-600 font-outfit font-bold text-sm hover:border-primary hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/30 transition-all duration-300" href="index.html">
+<i class="w-4 h-4" data-lucide="arrow-left"></i>
+                Back to Home
+            </a>
+</div>
+</nav>
+<!-- ERP Tech Hero Section -->
+<section class="relative pt-40 pb-32 overflow-hidden bg-slate-900 border-b border-slate-800 min-h-[85vh] flex items-center">
+<!-- Connecting Nodes Background -->
+<div class="absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(circle at center, rgba(16,185,129,0.4) 2px, transparent 2px); background-size: 60px 60px;"></div>
+<!-- Glowing Accents -->
+<div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-emerald-500/20 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-teal-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-4 relative z-10 w-full animate-fade-in-up">
+<div class="flex items-center gap-3 mb-8 text-sm font-bold text-slate-400 tracking-wide uppercase">
+<a class="hover:text-emerald-400 transition-colors" href="index.html">Home</a>
+<span class="text-slate-600">/</span>
+<span class="text-emerald-400">Enterprise Software</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<!-- Left Content -->
+<div>
+<div class="flex flex-wrap gap-4 mb-8">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+<i class="w-3 h-3" data-lucide="database"></i> Direct API Sync
+                        </span>
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+                            SAP &amp; Sundar Ready
+                        </span>
+</div>
+<h1 class="font-outfit font-black text-5xl md:text-7xl text-white leading-[1.05] mb-6 tracking-tight">
+                        Seamless<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Integration.</span>
+</h1>
+<p class="font-inter text-slate-400 text-lg md:text-xl max-w-xl leading-relaxed mb-10 border-l-4 border-emerald-500 pl-6">
+                        Push weight data, photos, and vehicle logs directly into SAP, Sundar, Fortune scales and instruments, or Government portals in real-time. Completely eliminate manual data entry.
+                    </p>
+<div class="flex flex-wrap gap-5">
+<a class="px-8 py-4 bg-emerald-500 text-slate-900 rounded-xl font-outfit font-black hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all duration-500 transform hover:-translate-y-1 flex items-center gap-2" href="index.html#contact">
+<i class="w-5 h-5" data-lucide="code"></i> View API Docs
+                        </a>
+<a class="px-8 py-4 bg-slate-800/50 border border-slate-700 text-white rounded-xl font-outfit font-bold hover:bg-slate-800 transition-all duration-300 flex items-center gap-2 backdrop-blur-md" href="#deep-dive">
+                            Integration Setup <i class="w-5 h-5 text-slate-400" data-lucide="arrow-down"></i>
+</a>
+</div>
+</div>
+<!-- Right Visual: API Request Simulation -->
+<div class="relative hidden lg:block perspective-1000">
+<div class="relative bg-slate-950 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-xl transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 ease-out font-mono text-sm">
+<!-- Code Window Chrome -->
+<div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-800">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+</div>
+<div class="text-slate-500 text-xs">POST /api/v1/sync/sap</div>
+</div>
+<div class="text-slate-400">
+<span class="text-purple-400">curl</span> -X POST \<br/>
+                              https://api.aaravya.com/sync/sap \<br/>
+                              -H <span class="text-green-400">"Authorization: Bearer sk_live_***"</span> \<br/>
+                              -H <span class="text-green-400">"Content-Type: application/json"</span> \<br/>
+                              -d '{<br/>
+                                <span class="text-blue-400">"ticket_id"</span>: <span class="text-orange-400">"WB-2023-8941"</span>,<br/>
+                                <span class="text-blue-400">"vehicle"</span>: <span class="text-orange-400">"MH-12-AB-1234"</span>,<br/>
+                                <span class="text-blue-400">"net_weight"</span>: <span class="text-yellow-300">42550</span>,<br/>
+                                <span class="text-blue-400">"timestamp"</span>: <span class="text-orange-400">"2023-10-25T14:30:00Z"</span><br/>
+                              }'
+                        </div>
+<!-- Success Popup -->
+<div class="absolute -right-8 -bottom-8 bg-emerald-500/10 border border-emerald-500/30 p-4 rounded-xl backdrop-blur-md shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
+<div class="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white shadow-[0_0_15px_rgba(16,185,129,0.6)]">
+<i class="w-5 h-5" data-lucide="check"></i>
+</div>
+<div>
+<div class="text-white font-bold font-sans text-sm">200 OK</div>
+<div class="text-emerald-400 font-sans text-xs">Data synced to SAP ERP</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Stats Bar (Dark) -->
+<div class="border-b border-slate-800 bg-slate-950 relative z-20">
+<div class="max-w-7xl mx-auto px-4 py-12 relative">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-slate-800">
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3">&lt;<span class="text-emerald-400">1</span>s</div>
+<div class="text-slate-300 font-bold mb-1">API Latency</div>
+<div class="text-slate-500 text-sm">Instantaneous data push via Webhooks.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-emerald-400">100</span>%</div>
+<div class="text-slate-300 font-bold mb-1">Data Accuracy</div>
+<div class="text-slate-500 text-sm">No manual entry means zero typo errors.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-emerald-400">AES</span></div>
+<div class="text-slate-300 font-bold mb-1">256-bit Encryption</div>
+<div class="text-slate-500 text-sm">Bank-grade security for your financial data.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-emerald-400">50</span>+</div>
+<div class="text-slate-300 font-bold mb-1">Pre-built Connectors</div>
+<div class="text-slate-500 text-sm">Ready modules for SAP, Sundar, Fortune scales and instruments.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SAP, ERP & Portal Integration Section -->
+<section class="py-32 relative overflow-hidden bg-white" id="sap-integration">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 relative gsap-reveal">
+<div class="absolute -inset-4 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-3xl transform -rotate-3 scale-105"></div>
+<img alt="SAP ERP Integration" class="relative rounded-2xl shadow-2xl object-contain w-full h-[400px] bg-white border border-slate-200" src="https://codeshilp.com/wp-content/uploads/2025/07/anpr-wb-4.png"/>
+</div>
+<div class="order-1 lg:order-2 gsap-reveal">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-bold uppercase tracking-widest mb-6">
+<i class="w-3 h-3" data-lucide="refresh-cw"></i> Live Sync
+</div>
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">SAP, ERP &amp; Portal <span class="text-emerald-500">Integration.</span></h2>
+<p class="text-slate-600 text-lg leading-relaxed mb-8">
+Weight data flows to SAP, Sundar, Fortune scales and instruments, or the Annadarpan government portal instantly. Zero manual re-entry means zero typo errors and complete transparency across your organization.
+</p>
+<ul class="space-y-4 mb-8">
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i class="w-4 h-4" data-lucide="check"></i></div>
+<span class="text-slate-700 font-medium">Instant GRN Generation.</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i class="w-4 h-4" data-lucide="check"></i></div>
+<span class="text-slate-700 font-medium">Live Government Portal Sync (e.g., Annadarpan).</span>
+</li>
+<li class="flex items-start gap-3">
+<div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5"><i class="w-4 h-4" data-lucide="check"></i></div>
+<span class="text-slate-700 font-medium">Automatic Purchase Order Validation.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Deep Dive: ERP Integration -->
+<section class="py-32 relative overflow-hidden bg-slate-50" id="deep-dive">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full text-indigo-600 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="network"></i> Seamless Synchronization
+                </span>
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Eliminate dual data entry.</h2>
+<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">Connect your weighbridge directly to your corporate ERP system. Validations happen before weighment, and GRNs are posted immediately after.</p>
+</div>
+<!-- Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 gsap-reveal">
+<!-- Feature 1 -->
+<div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="shield-check"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Live PO Validation</h3>
+<p class="text-slate-600 leading-relaxed text-sm">When a truck arrives, Aaravya checks the ERP for an active Purchase Order. If the PO is closed or quantity exceeded, the weighbridge blocks the entry.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="zap"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Instant Postings</h3>
+<p class="text-slate-600 leading-relaxed text-sm">Net weight is posted directly to SAP MM/SD modules the second the ticket is printed, generating instant Good Receipt Notes (GRN).</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="link"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Master Data Sync</h3>
+<p class="text-slate-600 leading-relaxed text-sm">Customer, Supplier, and Material master lists are automatically synchronized from the ERP to the weighbridge overnight.</p>
+</div>
+</div>
+<!-- ERP Logos Section -->
+<div class="bg-white border border-slate-200 shadow-xl rounded-[2rem] p-10 gsap-reveal">
+<div class="text-center mb-8">
+<h3 class="font-bold text-slate-900 text-xl">We integrate with all major platforms</h3>
+</div>
+<div class="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-80">
+<div class="text-3xl font-black text-slate-800">SAP</div>
+<div class="text-3xl font-black text-slate-800">Sundar</div>
+<div class="text-3xl font-black text-slate-800">Fortune scales and instruments</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Architecture Section -->
+<section class="py-32 relative overflow-hidden bg-white border-y border-slate-200" id="architecture">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">How it works.</h2>
+<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">Our middleware acts as a secure bridge between the physical weighbridge and your corporate IT infrastructure.</p>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-[2rem] p-8 md:p-16 relative gsap-reveal">
+<!-- Diagram Container -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+<!-- Left: Weighbridge -->
+<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm w-full md:w-1/3 text-center z-10">
+<div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="w-8 h-8" data-lucide="scale"></i>
+</div>
+<h4 class="font-bold text-slate-900 text-lg mb-2">Aaravya Desktop</h4>
+<p class="text-slate-500 text-sm">Captures raw weight from indicator and reads RFID/ANPR.</p>
+</div>
+<!-- Middle: API / Middleware -->
+<div class="relative w-full md:w-1/3 flex justify-center py-10 md:py-0">
+<!-- Connecting Lines (Desktop only) -->
+<div class="hidden md:block absolute top-1/2 left-[-50%] right-[-50%] h-1 border-t-2 border-dashed border-indigo-300 -z-10"></div>
+<div class="bg-indigo-600 p-6 rounded-2xl shadow-xl shadow-indigo-600/30 text-center z-10 relative group">
+<div class="absolute inset-0 bg-white/20 rounded-2xl animate-pulse"></div>
+<div class="w-12 h-12 bg-white/20 text-white rounded-full flex items-center justify-center mx-auto mb-4 relative z-10">
+<i class="w-6 h-6" data-lucide="arrow-left-right"></i>
+</div>
+<h4 class="font-bold text-white text-lg mb-1 relative z-10">API Middleware</h4>
+<p class="text-indigo-100 text-xs relative z-10">OData / REST / RFC</p>
+</div>
+</div>
+<!-- Right: ERP -->
+<div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm w-full md:w-1/3 text-center z-10">
+<div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+<i class="w-8 h-8" data-lucide="database"></i>
+</div>
+<h4 class="font-bold text-slate-900 text-lg mb-2">Corporate ERP</h4>
+<p class="text-slate-500 text-sm">SAP / Sundar / Fortune scales and instruments securely hosted in Cloud or On-Prem.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs: Integrations -->
+<section class="py-32 relative overflow-hidden bg-slate-50" id="tech-specs">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-200 border border-slate-300 rounded-full text-slate-700 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="settings"></i> Technical Data
+                </span>
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Integration Protocols.</h2>
+</div>
+<div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm max-w-4xl mx-auto gsap-reveal">
+<table class="w-full text-left border-collapse">
+<tbody class="divide-y divide-slate-100 text-sm">
+<tr class="bg-slate-50">
+<th class="py-4 px-6 font-outfit font-bold text-sm uppercase tracking-widest text-slate-900" colspan="2">SAP Specifics</th>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900 w-1/3">Integration Methods</td>
+<td class="py-4 px-6 text-slate-600">RFC (Remote Function Call), OData Services, IDoc via PI/PO.</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Supported Modules</td>
+<td class="py-4 px-6 text-slate-600">MM (Materials Management), SD (Sales &amp; Distribution), EWM.</td>
+</tr>
+<tr class="bg-slate-50">
+<th class="py-4 px-6 font-outfit font-bold text-sm uppercase tracking-widest text-slate-900 border-t border-slate-200" colspan="2">Modern APIs</th>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">REST JSON API</td>
+<td class="py-4 px-6 text-slate-600">Bidirectional APIs secured with OAuth 2.0 / API Keys.</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Webhooks</td>
+<td class="py-4 px-6 text-slate-600">Real-time HTTP push to your endpoints upon ticket generation.</td>
+</tr>
+<tr class="bg-slate-50">
+<th class="py-4 px-6 font-outfit font-bold text-sm uppercase tracking-widest text-slate-900 border-t border-slate-200" colspan="2">Legacy Systems</th>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Database Staging</td>
+<td class="py-4 px-6 text-slate-600">Direct SQL INSERT/UPDATE into a shared staging table.</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">File Export</td>
+<td class="py-4 px-6 text-slate-600">Automated CSV/XML dumping to an FTP server or local network folder.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 relative overflow-hidden bg-white border-t border-slate-200" id="faq">
+<div class="max-w-4xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-4">Integration FAQs</h2>
+</div>
+<div class="space-y-4 gsap-reveal">
+<div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">Do we need to write ABAP code for SAP integration?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">Your SAP team will need to expose standard RFCs or OData services for PO validation and GRN posting. Our middleware handles the consumption of these services. We provide comprehensive documentation to guide your SAP team.</p>
+</div>
+</div>
+<div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">What happens if the ERP server goes down during weighment?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">The system can be configured in "Offline mode". It will generate a local ticket to keep trucks moving, and automatically queue the transaction to push to the ERP once the connection is restored.</p>
+</div>
+</div>
+<div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">Is the API documentation available?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">Yes, we provide full Swagger documentation for our REST APIs, allowing your internal IT team or custom ERP provider to build seamless two-way integrations quickly.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Modern Premium CTA -->
+<section class="py-24 relative overflow-hidden bg-white">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-indigo-100 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-xl text-center gsap-reveal">
+<!-- Abstract glowing orbs -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-[3rem]">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[100%] bg-primary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+<div class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[100%] bg-secondary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="font-outfit font-black text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight">Ready to upgrade your weighbridge?</h2>
+<p class="text-slate-600 text-xl mb-10 leading-relaxed">Join 500+ enterprise plants that have eliminated fraud and accelerated their operations with Aaravya.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white rounded-xl font-outfit font-bold text-lg hover:bg-blue-600 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300" href="index.html#contact">
+<i class="w-6 h-6" data-lucide="phone"></i> Request Free Demo
+                        </a>
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-700 border border-slate-200 shadow-sm rounded-xl font-outfit font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 backdrop-blur-md" href="index.html#contact">
+                            Speak to Sales
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 py-10 text-center">
+<div class="max-w-7xl mx-auto px-4">
+<p class="text-slate-500 text-sm">© 2026 Aaravya Technology Pvt. Ltd.  ·  <a class="text-primary hover:underline" href="index.html">Back to Home</a>  ·  <a class="text-primary hover:underline" href="index.html#contact">Contact Us</a></p>
+</div>
+</footer>
+<!-- Init Scripts -->
+<script>
+        // Init Lucide Icons
+        if(typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const revealElements = document.querySelectorAll(".gsap-reveal");
+            
+            revealElements.forEach((element) => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId, btn) {
+            // Remove active from all tabs and btns
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Add active to targeted
+            document.getElementById('tab-' + tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(item) {
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-answer').classList.remove('open');
+            });
+
+            // Toggle clicked FAQ
+            if (!isActive) {
+                item.classList.add('active');
+                answer.classList.add('open');
+            }
+        }
+    </script>
+<!-- Lightbox Modal -->
+<div class="fixed inset-0 z-[100] bg-[#020617]/95 backdrop-blur-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500" id="gallery-lightbox">
+<button class="absolute top-6 right-6 lg:top-10 lg:right-10 w-14 h-14 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-500 z-50 cursor-pointer hover:rotate-90 hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]" onclick="closeLightbox()">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+<!-- Navigation Arrows -->
+<button class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:-translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="prevLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<button class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="nextLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+<div class="max-w-7xl w-full mx-16 lg:mx-24 relative transform scale-95 translate-y-12 opacity-0 transition-all duration-700 ease-out flex flex-col lg:flex-row items-center gap-8 lg:gap-16" id="lightbox-content-box">
+<!-- Image Container -->
+<div class="w-full lg:w-2/3 relative rounded-[2rem] p-2 bg-gradient-to-br from-white/20 to-white/0 border border-white/10 shadow-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-blue-500/20 blur-[100px] -z-10 group-hover:bg-blue-400/30 transition-colors duration-700"></div>
+<img alt="Gallery Preview" class="w-full h-auto max-h-[70vh] object-contain rounded-[1.5rem] shadow-2xl bg-black/60 transition-opacity duration-300" id="lightbox-img" src=""/>
+</div>
+<!-- Details Container -->
+<div class="w-full lg:w-1/3 flex flex-col justify-center text-left">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 font-bold text-xs uppercase tracking-widest mb-6 w-max">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="m14.31 8 5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="m7.38 12 5.74-9.94"></path><path d="M9.69 16 3.95 6.06"></path><path d="M14.31 16H2.83"></path><path d="m16.62 12-5.74 9.94"></path></svg> Gallery View
+                </div>
+<h3 class="font-outfit font-black text-4xl lg:text-5xl text-white mb-6 leading-tight transition-opacity duration-300" id="lightbox-title"></h3>
+<div class="w-12 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-6"></div>
+<p class="text-slate-400 text-lg lg:text-xl font-inter leading-relaxed max-w-lg transition-opacity duration-300" id="lightbox-desc"></p>
+</div>
+</div>
+</div>
+<script>
+        let currentGalleryIndex = 0;
+        let galleryItems = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('[onclick^="openLightbox("]');
+            galleryItems = Array.from(triggers).map((el, index) => {
+                const onclickStr = el.getAttribute('onclick');
+                const matches = onclickStr.match(/'([^']*)'/g);
+                if (matches && matches.length >= 3) {
+                    el.removeAttribute('onclick');
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openLightboxByIndex(index);
+                    });
+                    return {
+                        src: matches[0].replace(/'/g, ''),
+                        title: matches[1].replace(/'/g, ''),
+                        desc: matches[2].replace(/'/g, '')
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+        });
+
+        function openLightboxByIndex(index) {
+            if (galleryItems.length === 0) return;
+            
+            if (index < 0) index = galleryItems.length - 1;
+            if (index >= galleryItems.length) index = 0;
+            
+            currentGalleryIndex = index;
+            const item = galleryItems[index];
+            
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const desc = document.getElementById('lightbox-desc');
+            
+            if (!lightbox.classList.contains('pointer-events-none')) {
+                img.style.opacity = '0';
+                title.style.opacity = '0';
+                desc.style.opacity = '0';
+                
+                setTimeout(() => {
+                    img.src = item.src;
+                    title.textContent = item.title;
+                    desc.textContent = item.desc;
+                    
+                    img.style.opacity = '1';
+                    title.style.opacity = '1';
+                    desc.style.opacity = '1';
+                }, 300);
+            } else {
+                img.src = item.src;
+                title.textContent = item.title;
+                desc.textContent = item.desc;
+                
+                img.style.opacity = '1';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+                
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    contentBox.classList.remove('scale-95', 'translate-y-12', 'opacity-0');
+                    contentBox.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                }, 50);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function nextLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex + 1);
+        }
+
+        function prevLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex - 1);
+        }
+
+        function openLightbox(imgSrc, title, desc) {
+            const idx = galleryItems.findIndex(i => i.src === imgSrc);
+            if (idx !== -1) {
+                openLightboxByIndex(idx);
+            } else {
+                galleryItems.push({src: imgSrc, title, desc});
+                openLightboxByIndex(galleryItems.length - 1);
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            
+            contentBox.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            contentBox.classList.add('scale-95', 'translate-y-12', 'opacity-0');
+            
+            setTimeout(() => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }, 400); 
+        }
+
+        document.getElementById('gallery-lightbox').addEventListener('click', function(e) {
+            if (e.target === this || e.target.id === 'lightbox-content-box') {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('gallery-lightbox').classList.contains('pointer-events-none')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+            }
+        });
+    </script>
+</body>
+</html>

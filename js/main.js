@@ -249,30 +249,6 @@ function initUI() {
         });
     });
 
-    // Custom Cursor
-    const cursor = document.getElementById('custom-cursor');
-    const follower = document.getElementById('cursor-follower');
-    
-    let lastMove = 0;
-    window.addEventListener('mousemove', (e) => {
-        const now = Date.now();
-        if (now - lastMove < 16) return; // Throttle to ~60fps
-        lastMove = now;
-        gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.1 });
-        gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.3 });
-    });
-
-    // Meaningful Interactions
-    document.querySelectorAll('a, button, .feature-card, .process-node').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            gsap.to(cursor, { scale: 3, opacity: 0.3, duration: 0.3 });
-            follower.classList.add('expand');
-        });
-        el.addEventListener('mouseleave', () => {
-            gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.3 });
-            follower.classList.remove('expand');
-        });
-    });
 
     // Sticky CTA Logic
     const stickyCta = document.getElementById('sticky-cta');
@@ -614,5 +590,59 @@ window.addEventListener('DOMContentLoaded', () => {
     initNewsletter();
     initStatCounters();
     initScrollToTop();
-    initSecurityLayer();
+    // initSecurityLayer(); // Removed: undefined function causing ReferenceError
+    initSolutionTabs();
+    initPipelineAnimation();
 });
+
+// =====================================================
+// SOLUTION TABS FILTER
+// =====================================================
+function initSolutionTabs() {
+    const tabs = document.querySelectorAll('.solution-tab');
+    const cards = document.querySelectorAll('.solution-card[data-category]');
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update active tab
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const filter = tab.dataset.filter;
+
+            cards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                    card.style.pointerEvents = 'auto';
+                } else {
+                    card.style.opacity = '0.3';
+                    card.style.transform = 'scale(0.97)';
+                    card.style.pointerEvents = 'none';
+                }
+                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            });
+        });
+    });
+}
+
+// =====================================================
+// PIPELINE SCROLL ANIMATION
+// =====================================================
+function initPipelineAnimation() {
+    const nodes = document.querySelectorAll('.pipeline-node-wrapper');
+    if (!nodes.length || typeof gsap === 'undefined') return;
+
+    gsap.from(nodes, {
+        scrollTrigger: {
+            trigger: '.pipeline-container',
+            start: 'top 75%',
+        },
+        opacity: 0,
+        y: 30,
+        stagger: 0.12,
+        duration: 0.6,
+        ease: 'power2.out'
+    });
+}

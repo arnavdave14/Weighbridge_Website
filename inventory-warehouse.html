@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weighbridge Software Solutions | Aaravya Technology</title>
+<meta content="Complete Weighbridge Software Suite — Standard, Manless, SAP Integration, ANPR &amp; Cloud Dashboard. Trusted by Mining, Cement, Steel &amp; 20+ industries across India." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0891b2',
+                        accent: '#e11d48',
+                        dark: '#0f172a',
+                        muted: '#64748b',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Styles -->
+<link href="css/style.css" rel="stylesheet"/>
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* Tab Styles */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+        }
+        .tab-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39);
+        }
+        
+        /* FAQ Styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .faq-answer.open {
+            max-height: 300px; /* arbitrary large max-height */
+            opacity: 1;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-inter selection:bg-primary/30 selection:text-primary">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="w-full h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200 px-8 md:px-16 flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-4 cursor-pointer group" onclick="window.location.href='index.html'">
+<img alt="Aaravya Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500" src="assets/images/logo.png"/>
+<div class="flex flex-col">
+<span class="font-outfit font-black text-2xl tracking-tighter text-slate-900 leading-none">AARAVYA</span>
+<span class="font-inter font-bold text-[10px] tracking-[0.2em] text-primary uppercase leading-none mt-1">Enterprises</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-slate-200 bg-white text-slate-600 font-outfit font-bold text-sm hover:border-primary hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/30 transition-all duration-300" href="index.html">
+<i class="w-4 h-4" data-lucide="arrow-left"></i>
+                Back to Home
+            </a>
+</div>
+</nav>
+<!-- Inventory & Warehouse Hero Section -->
+<section class="relative pt-44 pb-32 overflow-hidden bg-[#064e3b] border-b border-emerald-800/30 min-h-[90vh] flex items-center">
+<!-- Logistics Tech Background -->
+<div class="absolute inset-0 z-0">
+<!-- Background Image -->
+<div class="absolute inset-0 opacity-20 mix-blend-luminosity">
+<img alt="Warehouse logistics" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1586528116311-ad8ed7c663c0?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"/>
+</div>
+<!-- Grid Pattern -->
+<div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(emerald 1px, transparent 1px), linear-gradient(90deg, emerald 1px, transparent 1px); background-size: 40px 40px;"></div>
+<!-- Glows -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#064e3b] via-[#064e3b]/90 to-emerald-950/80"></div>
+<div class="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-emerald-500/20 blur-[100px] pointer-events-none"></div>
+</div>
+<div class="max-w-7xl mx-auto px-4 relative z-10 w-full animate-fade-in-up">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<!-- Text Content -->
+<div class="w-full lg:w-1/2 flex flex-col items-start text-left">
+<div class="flex items-center gap-3 mb-8 text-sm font-bold text-emerald-400/80 tracking-wide uppercase">
+<a class="hover:text-emerald-400 transition-colors" href="index.html">Home</a>
+<span class="text-slate-600">/</span>
+<span class="text-emerald-400">Logistics</span>
+</div>
+<div class="flex flex-wrap gap-4 mb-8">
+<span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-bold shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+<i class="w-4 h-4" data-lucide="package-search"></i> Real-time Tracking
+                        </span>
+<span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-sm font-bold">
+                            Multi-Location Ready
+                        </span>
+</div>
+<h1 class="font-outfit font-black text-5xl md:text-7xl text-white leading-[1.05] mb-6 tracking-tight">
+                        Total Control Over <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-300">Every Asset.</span>
+</h1>
+<p class="font-inter text-emerald-100/70 text-xl leading-relaxed mb-10 font-medium max-w-lg">
+                        Never lose track of your stock. Instantly track inward, outward, transfers, and inventory levels across your entire warehouse network with barcode precision.
+                    </p>
+<div class="flex flex-wrap gap-5 w-full">
+<a class="px-10 py-5 bg-emerald-500 text-slate-900 rounded-xl font-outfit text-lg font-black tracking-wide shadow-lg hover:shadow-[0_20px_40px_rgba(16,185,129,0.4)] hover:bg-emerald-400 transition-all duration-500 transform hover:-translate-y-1 flex items-center gap-2" href="index.html#contact">
+                            Transform Operations <i class="w-5 h-5" data-lucide="arrow-right"></i>
+</a>
+<a class="px-10 py-5 bg-slate-900/50 border border-emerald-500/30 text-white rounded-xl font-outfit text-lg font-bold hover:bg-slate-900 transition-all duration-300 backdrop-blur-md flex items-center gap-2" href="#deep-dive">
+                            Explore Features
+                        </a>
+</div>
+</div>
+<!-- Logistics Dashboard / Scanner Visual -->
+<div class="w-full lg:w-1/2 relative perspective-1000">
+<!-- Dashboard Window -->
+<div class="relative bg-slate-950 border border-emerald-500/30 p-2 rounded-2xl shadow-[0_30px_60px_rgba(16,185,129,0.15)] transform rotate-y-[-8deg] hover:rotate-y-0 transition-transform duration-700">
+<div class="flex items-center gap-2 px-4 py-3 bg-slate-900 rounded-t-xl border-b border-emerald-900/50">
+<i class="w-4 h-4 text-emerald-500" data-lucide="boxes"></i>
+<span class="text-emerald-500 text-xs font-mono font-bold tracking-wider">INVENTORY_SYNC_V4</span>
+</div>
+<img alt="Inventory Software" class="w-full h-auto rounded-b-xl opacity-70" src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?q=80&amp;w=2000&amp;auto=format&amp;fit=crop"/>
+<!-- Floating Scanner Widget -->
+<div class="absolute top-1/2 -left-8 -translate-y-1/2 bg-slate-900 border-l-4 border-emerald-500 p-4 rounded-r-xl shadow-2xl backdrop-blur-md animate-fade-in-up">
+<div class="flex items-center gap-3">
+<div class="relative">
+<i class="w-10 h-10 text-emerald-400" data-lucide="barcode"></i>
+<div class="absolute inset-0 bg-emerald-500/20 blur-md"></div>
+<div class="absolute top-1/2 left-0 right-0 h-0.5 bg-red-500 transform -translate-y-1/2 shadow-[0_0_8px_rgba(239,68,68,1)] animate-pulse"></div>
+</div>
+<div>
+<div class="text-emerald-400 text-xs font-mono">SCANNED #SKU-994</div>
+<div class="text-white font-bold font-outfit text-lg">Stock Updated</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Stats Bar -->
+<div class="border-y border-emerald-900/40 bg-slate-950 relative z-20">
+<div class="max-w-7xl mx-auto px-4 py-16 relative">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-emerald-900/30">
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3">Live</div>
+<div class="text-emerald-400 font-bold mb-1">Stock Position</div>
+<div class="text-slate-500 text-sm">Monitor current inventory levels globally.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3">Alerts</div>
+<div class="text-emerald-400 font-bold mb-1">Low Stock Warning</div>
+<div class="text-slate-500 text-sm">Automated push notifications for reordering.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><i class="w-10 h-10 mx-auto text-emerald-500" data-lucide="qr-code"></i></div>
+<div class="text-emerald-400 font-bold mb-1">Barcode &amp; QR</div>
+<div class="text-slate-500 text-sm">Print and scan custom labels instantly.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-emerald-500">Batch</span></div>
+<div class="text-emerald-400 font-bold mb-1">Tracking</div>
+<div class="text-slate-500 text-sm">Manage expiry dates and batch history seamlessly.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Deep Dive: Inventory Features -->
+<section class="py-32 relative overflow-hidden bg-emerald-50" id="deep-dive">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-700 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="package"></i> Stock Control
+                </span>
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-slate-900 mb-6">Real-time inventory tracking.</h2>
+<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">Bridge the gap between your weighbridge operations and warehouse stock. Every inward vehicle adds to stock, every outward vehicle depletes it.</p>
+</div>
+<!-- Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 gsap-reveal">
+<!-- Feature 1 -->
+<div class="bg-white p-8 rounded-3xl border border-emerald-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="arrow-down-to-line"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Inward/Outward Ledger</h3>
+<p class="text-slate-600 leading-relaxed text-sm">Automatically classify transactions. The system updates the running stock balance for specific materials (e.g., Coal, Scrap, Finished Goods) instantly.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white p-8 rounded-3xl border border-emerald-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="alert-triangle"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Reorder Alerts</h3>
+<p class="text-slate-600 leading-relaxed text-sm">Set minimum stock thresholds for critical raw materials. If weighments indicate stock dropping below the line, an automatic alert is triggered to procurement.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white p-8 rounded-3xl border border-emerald-200 shadow-sm hover:shadow-xl hover:border-emerald-400 transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="map"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-slate-900 mb-3">Multi-Godown Routing</h3>
+<p class="text-slate-600 leading-relaxed text-sm">Assign incoming trucks to specific warehouse zones or godowns during weighment. Ensure the material is dumped in the exact correct location.</p>
+</div>
+</div>
+<!-- Visualization / Architecture -->
+<div class="bg-white border border-emerald-200 shadow-xl rounded-[3rem] p-8 lg:p-12 mb-12 relative overflow-hidden gsap-reveal">
+<div class="flex flex-col lg:flex-row items-center gap-12 relative z-10">
+<div class="flex-1 w-full bg-emerald-50 rounded-2xl border border-emerald-100 p-6 relative shadow-inner flex items-center justify-center">
+<div class="text-center">
+<h4 class="font-bold text-slate-900 text-xl mb-4">Live Stock: <span class="text-emerald-600">Aluminium Scrap</span></h4>
+<div class="font-outfit font-black text-6xl text-slate-900">452.4 <span class="text-2xl text-slate-500">MT</span></div>
+<div class="mt-4 flex gap-4 justify-center">
+<div class="bg-emerald-100 px-4 py-2 rounded-lg text-emerald-800 text-sm font-bold"><i class="w-4 h-4 inline" data-lucide="arrow-down"></i> +12 MT (Today)</div>
+<div class="bg-red-100 px-4 py-2 rounded-lg text-red-800 text-sm font-bold"><i class="w-4 h-4 inline" data-lucide="arrow-up"></i> -4.5 MT (Today)</div>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-6">
+<h3 class="font-outfit font-black text-3xl md:text-4xl text-slate-900">Prevent Stock Shrinkage</h3>
+<p class="text-slate-600 text-lg leading-relaxed">By tying weighbridge data directly to inventory logs, you eliminate manual entry errors and "paper losses".</p>
+<ul class="space-y-4 pt-4 text-slate-700">
+<li class="flex items-start gap-3">
+<div class="mt-1 text-emerald-500"><i class="w-5 h-5" data-lucide="check-circle"></i></div>
+<div><strong class="text-slate-900">Automated GRN Generation</strong><br/><span class="text-sm">Goods Receipt Notes are automatically generated upon the final net weight calculation.</span></div>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-1 text-emerald-500"><i class="w-5 h-5" data-lucide="check-circle"></i></div>
+<div><strong class="text-slate-900">Discrepancy Flags</strong><br/><span class="text-sm">If the weighed amount differs significantly from the Purchase Order amount, the system flags the batch for manager review.</span></div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs -->
+<section class="py-32 relative overflow-hidden bg-white border-y border-slate-200" id="tech-specs">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-200 border border-slate-300 rounded-full text-slate-700 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="settings"></i> Technical Capabilities
+                </span>
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-6">Warehouse Integration.</h2>
+</div>
+<div class="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-sm max-w-4xl mx-auto gsap-reveal">
+<table class="w-full text-left border-collapse">
+<tbody class="divide-y divide-slate-200 text-sm">
+<tr class="bg-white">
+<th class="py-4 px-6 font-outfit font-bold text-sm uppercase tracking-widest text-slate-900" colspan="2">Inventory Sync</th>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900 w-1/3">Data Structure</td>
+<td class="py-4 px-6 text-slate-600">Supports hierarchical items (Category &gt; Sub-Category &gt; Item)</td>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Barcode/QR Support</td>
+<td class="py-4 px-6 text-slate-600">Prints scannable QR codes on weigh slips for easy warehouse scanning</td>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Export Formats</td>
+<td class="py-4 px-6 text-slate-600">XML/JSON structured data for ingestion by Tally, SAP B1, or Oracle NetSuite</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 relative overflow-hidden bg-slate-50" id="faq">
+<div class="max-w-4xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-4">Inventory FAQs</h2>
+</div>
+<div class="space-y-4 gsap-reveal">
+<div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">Does this replace my existing inventory software?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">It can act as a standalone lightweight inventory tracker, but it is designed to seamlessly push data to your dedicated ERP (like Tally or SAP) rather than entirely replacing it.</p>
+</div>
+</div>
+<div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">Can I track multiple godowns/warehouses?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">Yes, you can configure multiple storage locations. The operator selects the destination godown during weighment, and the stock is allocated accordingly.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery -->
+<section class="py-24 relative overflow-hidden bg-white border-t border-slate-200" id="gallery">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-6">Warehouse Flow</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 gsap-reveal">
+<div class="rounded-2xl overflow-hidden shadow-md h-[300px] border border-slate-200 relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&amp;w=1000&amp;auto=format&amp;fit=crop', 'Warehouse Operations', 'Detailed view of Warehouse Operations')">
+<img alt="Warehouse Operations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+<i class="w-5 h-5" data-lucide="zoom-in"></i>
+</div>
+<h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Warehouse Operations</h4>
+</div></div>
+<div class="rounded-2xl overflow-hidden shadow-md h-[300px] border border-slate-200 relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&amp;w=1000&amp;auto=format&amp;fit=crop', 'Inventory Logistics', 'Detailed view of Inventory Logistics')">
+<img alt="Inventory Logistics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+<i class="w-5 h-5" data-lucide="zoom-in"></i>
+</div>
+<h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Inventory Logistics</h4>
+</div></div>
+<div class="rounded-2xl overflow-hidden shadow-md h-[300px] border border-slate-200 relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&amp;w=1000&amp;auto=format&amp;fit=crop', 'Stock Overview', 'Detailed view of Stock Overview')">
+<img alt="Stock Overview" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&amp;w=1000&amp;auto=format&amp;fit=crop"/>
+
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent p-6 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+<div class="bg-primary/20 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center mb-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 text-white">
+<i class="w-5 h-5" data-lucide="zoom-in"></i>
+</div>
+<h4 class="text-white font-bold text-xl mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">Stock Overview</h4>
+</div></div>
+</div>
+</div>
+</section>
+<!-- Modern Premium CTA -->
+<section class="py-24 relative overflow-hidden bg-white">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-indigo-100 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-xl text-center gsap-reveal">
+<!-- Abstract glowing orbs -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-[3rem]">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[100%] bg-primary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+<div class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[100%] bg-secondary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="font-outfit font-black text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight">Ready to upgrade your weighbridge?</h2>
+<p class="text-slate-600 text-xl mb-10 leading-relaxed">Join 500+ enterprise plants that have eliminated fraud and accelerated their operations with Aaravya.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white rounded-xl font-outfit font-bold text-lg hover:bg-blue-600 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300" href="index.html#contact">
+<i class="w-6 h-6" data-lucide="phone"></i> Request Free Demo
+                        </a>
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-700 border border-slate-200 shadow-sm rounded-xl font-outfit font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 backdrop-blur-md" href="index.html#contact">
+                            Speak to Sales
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 py-10 text-center">
+<div class="max-w-7xl mx-auto px-4">
+<p class="text-slate-500 text-sm">© 2026 Aaravya Technology Pvt. Ltd.  ·  <a class="text-primary hover:underline" href="index.html">Back to Home</a>  ·  <a class="text-primary hover:underline" href="index.html#contact">Contact Us</a></p>
+</div>
+</footer>
+<!-- Init Scripts -->
+<script>
+        // Init Lucide Icons
+        if(typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const revealElements = document.querySelectorAll(".gsap-reveal");
+            
+            revealElements.forEach((element) => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId, btn) {
+            // Remove active from all tabs and btns
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Add active to targeted
+            document.getElementById('tab-' + tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(item) {
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-answer').classList.remove('open');
+            });
+
+            // Toggle clicked FAQ
+            if (!isActive) {
+                item.classList.add('active');
+                answer.classList.add('open');
+            }
+        }
+    </script>
+<!-- Lightbox Modal -->
+<div class="fixed inset-0 z-[100] bg-[#020617]/95 backdrop-blur-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500" id="gallery-lightbox">
+<button class="absolute top-6 right-6 lg:top-10 lg:right-10 w-14 h-14 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-500 z-50 cursor-pointer hover:rotate-90 hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]" onclick="closeLightbox()">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+<!-- Navigation Arrows -->
+<button class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:-translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="prevLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<button class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="nextLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+<div class="max-w-7xl w-full mx-16 lg:mx-24 relative transform scale-95 translate-y-12 opacity-0 transition-all duration-700 ease-out flex flex-col lg:flex-row items-center gap-8 lg:gap-16" id="lightbox-content-box">
+<!-- Image Container -->
+<div class="w-full lg:w-2/3 relative rounded-[2rem] p-2 bg-gradient-to-br from-white/20 to-white/0 border border-white/10 shadow-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-blue-500/20 blur-[100px] -z-10 group-hover:bg-blue-400/30 transition-colors duration-700"></div>
+<img alt="Gallery Preview" class="w-full h-auto max-h-[70vh] object-contain rounded-[1.5rem] shadow-2xl bg-black/60 transition-opacity duration-300" id="lightbox-img" src=""/>
+</div>
+<!-- Details Container -->
+<div class="w-full lg:w-1/3 flex flex-col justify-center text-left">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 font-bold text-xs uppercase tracking-widest mb-6 w-max">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="m14.31 8 5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="m7.38 12 5.74-9.94"></path><path d="M9.69 16 3.95 6.06"></path><path d="M14.31 16H2.83"></path><path d="m16.62 12-5.74 9.94"></path></svg> Gallery View
+                </div>
+<h3 class="font-outfit font-black text-4xl lg:text-5xl text-white mb-6 leading-tight transition-opacity duration-300" id="lightbox-title"></h3>
+<div class="w-12 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-6"></div>
+<p class="text-slate-400 text-lg lg:text-xl font-inter leading-relaxed max-w-lg transition-opacity duration-300" id="lightbox-desc"></p>
+</div>
+</div>
+</div>
+<script>
+        let currentGalleryIndex = 0;
+        let galleryItems = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('[onclick^="openLightbox("]');
+            galleryItems = Array.from(triggers).map((el, index) => {
+                const onclickStr = el.getAttribute('onclick');
+                const matches = onclickStr.match(/'([^']*)'/g);
+                if (matches && matches.length >= 3) {
+                    el.removeAttribute('onclick');
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openLightboxByIndex(index);
+                    });
+                    return {
+                        src: matches[0].replace(/'/g, ''),
+                        title: matches[1].replace(/'/g, ''),
+                        desc: matches[2].replace(/'/g, '')
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+        });
+
+        function openLightboxByIndex(index) {
+            if (galleryItems.length === 0) return;
+            
+            if (index < 0) index = galleryItems.length - 1;
+            if (index >= galleryItems.length) index = 0;
+            
+            currentGalleryIndex = index;
+            const item = galleryItems[index];
+            
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const desc = document.getElementById('lightbox-desc');
+            
+            if (!lightbox.classList.contains('pointer-events-none')) {
+                img.style.opacity = '0';
+                title.style.opacity = '0';
+                desc.style.opacity = '0';
+                
+                setTimeout(() => {
+                    img.src = item.src;
+                    title.textContent = item.title;
+                    desc.textContent = item.desc;
+                    
+                    img.style.opacity = '1';
+                    title.style.opacity = '1';
+                    desc.style.opacity = '1';
+                }, 300);
+            } else {
+                img.src = item.src;
+                title.textContent = item.title;
+                desc.textContent = item.desc;
+                
+                img.style.opacity = '1';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+                
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    contentBox.classList.remove('scale-95', 'translate-y-12', 'opacity-0');
+                    contentBox.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                }, 50);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function nextLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex + 1);
+        }
+
+        function prevLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex - 1);
+        }
+
+        function openLightbox(imgSrc, title, desc) {
+            const idx = galleryItems.findIndex(i => i.src === imgSrc);
+            if (idx !== -1) {
+                openLightboxByIndex(idx);
+            } else {
+                galleryItems.push({src: imgSrc, title, desc});
+                openLightboxByIndex(galleryItems.length - 1);
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            
+            contentBox.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            contentBox.classList.add('scale-95', 'translate-y-12', 'opacity-0');
+            
+            setTimeout(() => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }, 400); 
+        }
+
+        document.getElementById('gallery-lightbox').addEventListener('click', function(e) {
+            if (e.target === this || e.target.id === 'lightbox-content-box') {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('gallery-lightbox').classList.contains('pointer-events-none')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+            }
+        });
+    </script>
+</body>
+</html>

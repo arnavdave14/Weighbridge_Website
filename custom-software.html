@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weighbridge Software Solutions | Aaravya Technology</title>
+<meta content="Complete Weighbridge Software Suite — Standard, Manless, SAP Integration, ANPR &amp; Cloud Dashboard. Trusted by Mining, Cement, Steel &amp; 20+ industries across India." name="description"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0891b2',
+                        accent: '#e11d48',
+                        dark: '#0f172a',
+                        muted: '#64748b',
+                    },
+                    fontFamily: {
+                        outfit: ['Outfit', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+<!-- Styles -->
+<link href="css/style.css" rel="stylesheet"/>
+<!-- Icons -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<style>
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(400%); }
+        }
+        .gsap-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        /* Tab Styles */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+        }
+        .tab-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 4px 14px 0 rgba(37,99,235,0.39);
+        }
+        
+        /* FAQ Styles */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .faq-answer.open {
+            max-height: 300px; /* arbitrary large max-height */
+            opacity: 1;
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-inter selection:bg-primary/30 selection:text-primary">
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav transition-all duration-300">
+<div class="w-full h-20 bg-white/80 backdrop-blur-2xl border-b border-slate-200 px-8 md:px-16 flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-4 cursor-pointer group" onclick="window.location.href='index.html'">
+<img alt="Aaravya Logo" class="h-10 w-auto group-hover:rotate-12 transition-transform duration-500" src="assets/images/logo.png"/>
+<div class="flex flex-col">
+<span class="font-outfit font-black text-2xl tracking-tighter text-slate-900 leading-none">AARAVYA</span>
+<span class="font-inter font-bold text-[10px] tracking-[0.2em] text-primary uppercase leading-none mt-1">Enterprises</span>
+</div>
+</div>
+<a class="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-slate-200 bg-white text-slate-600 font-outfit font-bold text-sm hover:border-primary hover:bg-primary hover:text-white hover:shadow-lg hover:shadow-primary/30 transition-all duration-300" href="index.html">
+<i class="w-4 h-4" data-lucide="arrow-left"></i>
+                Back to Home
+            </a>
+</div>
+</nav>
+<!-- Custom Software Hero Section -->
+<section class="relative pt-44 pb-32 overflow-hidden bg-[#0f0c29] border-b border-fuchsia-900/30 min-h-[90vh] flex items-center">
+<!-- Abstract Tech Background -->
+<div class="absolute inset-0 z-0">
+<!-- Gradient Base -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]"></div>
+<!-- Code Data Streams (Simulated via CSS) -->
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 20px, #e879f9 20px, #e879f9 21px); background-size: 100% 41px;"></div>
+<div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(90deg, transparent, transparent 20px, #c084fc 20px, #c084fc 21px); background-size: 41px 100%;"></div>
+<!-- Glowing Orbs -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-fuchsia-600/20 blur-[120px] pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-purple-600/20 blur-[100px] pointer-events-none"></div>
+</div>
+<div class="max-w-7xl mx-auto px-4 relative z-10 w-full animate-fade-in-up">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<!-- Text Content -->
+<div class="w-full lg:w-1/2 flex flex-col items-start text-left">
+<div class="flex items-center gap-3 mb-8 text-sm font-bold text-fuchsia-400 tracking-wide uppercase">
+<a class="hover:text-fuchsia-300 transition-colors" href="index.html">Home</a>
+<span class="text-slate-500">/</span>
+<span class="text-fuchsia-400">Bespoke Tech</span>
+</div>
+<div class="flex flex-wrap gap-4 mb-8">
+<span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-300 text-sm font-bold shadow-[0_0_15px_rgba(217,70,239,0.2)]">
+<i class="w-4 h-4" data-lucide="code"></i> Custom Architecture
+                        </span>
+<span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/5 border border-white/10 text-slate-300 text-sm font-bold backdrop-blur-sm">
+                            Any Industry. Any Workflow.
+                        </span>
+</div>
+<h1 class="font-outfit font-black text-5xl md:text-7xl text-white leading-[1.1] mb-6 tracking-tight">
+                        Software Built <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-400 to-indigo-400">Around You.</span>
+</h1>
+<p class="font-inter text-slate-300 text-xl leading-relaxed mb-10 font-medium max-w-lg">
+                        Don't change your business to fit off-the-shelf software. We engineer completely bespoke platforms mapped exactly to your unique operational DNA.
+                    </p>
+<div class="flex flex-wrap gap-5 w-full">
+<a class="px-10 py-5 bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white rounded-xl font-outfit text-lg font-bold shadow-lg hover:shadow-[0_20px_40px_rgba(192,132,252,0.3)] transition-all duration-500 transform hover:-translate-y-1 flex items-center gap-2 border border-fuchsia-400/30" href="index.html#contact">
+                            Discuss Your Project <i class="w-5 h-5" data-lucide="arrow-right"></i>
+</a>
+<a class="px-10 py-5 bg-white/5 border border-white/10 text-white rounded-xl font-outfit text-lg font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-md flex items-center gap-2" href="#deep-dive">
+                            Our Process
+                        </a>
+</div>
+</div>
+<!-- Abstract Code Editor Visual -->
+<div class="w-full lg:w-1/2 relative perspective-1000 hidden md:block">
+<!-- Fake Editor Window -->
+<div class="relative bg-[#0d1117] border border-slate-800 rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)] transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 transition-transform duration-700">
+<!-- IDE Header -->
+<div class="h-10 bg-[#161b22] border-b border-slate-800 flex items-center px-4 justify-between">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+<div class="w-3 h-3 rounded-full bg-slate-700"></div>
+</div>
+<div class="text-slate-400 text-xs font-mono flex items-center gap-2">
+<i class="w-3 h-3 text-fuchsia-400" data-lucide="file-json"></i> architecture.ts
+                            </div>
+</div>
+<!-- IDE Code Content -->
+<div class="p-6 font-mono text-sm leading-relaxed overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-[#0d1117] z-10 top-1/2"></div>
+<div class="text-slate-500 mb-2">// Defining bespoke business logic</div>
+<div class="text-fuchsia-400">const <span class="text-indigo-300">ClientWorkflow</span> <span class="text-slate-300">=</span> <span class="text-purple-400">new</span> <span class="text-yellow-200">CustomArchitecture</span><span class="text-slate-300">({</span></div>
+<div class="pl-4 text-sky-300">industry<span class="text-slate-300">:</span> <span class="text-green-300">'Manufacturing'</span><span class="text-slate-300">,</span></div>
+<div class="pl-4 text-sky-300">bottlenecks<span class="text-slate-300">:</span> <span class="text-slate-300">[</span><span class="text-green-300">'Data Silos'</span><span class="text-slate-300">,</span> <span class="text-green-300">'Manual Entry'</span><span class="text-slate-300">],</span></div>
+<div class="pl-4 text-sky-300">solution<span class="text-slate-300">:</span> <span class="text-slate-300">async</span> <span class="text-purple-400">function</span><span class="text-slate-300">() {</span></div>
+<div class="pl-8 text-slate-500">// Magic happens here</div>
+<div class="pl-8 text-fuchsia-400">await <span class="text-slate-300">this.</span><span class="text-indigo-300">automateEverything</span><span class="text-slate-300">();</span></div>
+<div class="pl-8 text-fuchsia-400">return <span class="text-green-300">'Maximum Efficiency'</span><span class="text-slate-300">;</span></div>
+<div class="pl-4 text-slate-300">}</div>
+<div class="text-slate-300">});</div>
+<div class="mt-4 text-slate-500">// Compiling perfect solution...</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="text-green-400 font-bold">SUCCESS</span>
+<span class="text-slate-400">Platform deployed successfully.</span>
+</div>
+<div class="mt-2 text-fuchsia-400 flex items-center gap-1 animate-pulse">
+<span>_</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Detailed Stats Bar -->
+<div class="border-y border-white/5 bg-[#0d1117] relative z-20">
+<div class="max-w-7xl mx-auto px-4 py-16 relative">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-white/5">
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><i class="w-10 h-10 mx-auto text-fuchsia-500" data-lucide="git-branch"></i></div>
+<div class="text-slate-300 font-bold mb-1">Workflow Mapping</div>
+<div class="text-slate-500 text-sm">We analyze and digitize your exact processes.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3">API</div>
+<div class="text-slate-300 font-bold mb-1">First Architecture</div>
+<div class="text-slate-500 text-sm">Built to integrate with any existing system.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-fuchsia-500">0</span></div>
+<div class="text-slate-300 font-bold mb-1">Bloatware</div>
+<div class="text-slate-500 text-sm">You only get the features you actually need.</div>
+</div>
+<div class="text-center px-4 gsap-reveal">
+<div class="font-outfit font-black text-5xl text-white mb-3"><span class="text-fuchsia-500">Scale</span></div>
+<div class="text-slate-300 font-bold mb-1">Infinite</div>
+<div class="text-slate-500 text-sm">Cloud-native design that grows with your business.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Deep Dive: Custom Development -->
+<section class="py-32 relative overflow-hidden bg-slate-900" id="deep-dive">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-full text-fuchsia-400 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="code-2"></i> Bespoke Solutions
+                </span>
+<h2 class="font-outfit font-black text-4xl md:text-5xl text-white mb-6">Built exactly for your process.</h2>
+<p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">Off-the-shelf software doesn't fit everyone. If your factory has a unique workflow, we will architect, code, and deploy a custom solution that maps perfectly to your reality.</p>
+</div>
+<!-- Features Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20 gsap-reveal">
+<!-- Feature 1 -->
+<div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-sm hover:border-fuchsia-500/50 transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-slate-900 text-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="git-merge"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-white mb-3">Custom Workflows</h3>
+<p class="text-slate-400 leading-relaxed text-sm">Need a 3-stage weighment instead of 2? Need to capture driver biometrics before the boom barrier opens? We code the logic to match your exact Standard Operating Procedure.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-sm hover:border-fuchsia-500/50 transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-slate-900 text-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="blocks"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-white mb-3">Legacy Integration</h3>
+<p class="text-slate-400 leading-relaxed text-sm">Still using a mainframe AS400 or an obscure, highly-customized older ERP? We write the middleware bridging scripts to ensure seamless data flow.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-sm hover:border-fuchsia-500/50 transition-all group relative overflow-hidden">
+<div class="w-14 h-14 bg-slate-900 text-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<i class="w-7 h-7" data-lucide="smartphone"></i>
+</div>
+<h3 class="font-outfit font-bold text-2xl text-white mb-3">White-Label Apps</h3>
+<p class="text-slate-400 leading-relaxed text-sm">We can develop completely branded mobile applications for your managers, customers, and transporters, tied directly to your weighbridge data.</p>
+</div>
+</div>
+<!-- Visualization / Architecture -->
+<div class="bg-slate-800 border border-slate-700 shadow-2xl rounded-[3rem] p-8 lg:p-12 mb-12 relative overflow-hidden gsap-reveal">
+<div class="flex flex-col lg:flex-row items-center gap-12 relative z-10">
+<div class="flex-1 w-full bg-slate-900 rounded-2xl border border-slate-700 p-6 relative shadow-inner overflow-hidden">
+<!-- Code mockup -->
+<div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<span class="text-slate-500 text-xs font-mono ml-2">custom_api_bridge.ts</span>
+</div>
+<pre class="text-xs font-mono text-fuchsia-300 overflow-x-auto"><code>async function syncCustomERP(weighment: Transaction) {
+  try {
+    const payload = transformToLegacyFormat(weighment);
+    const response = await axios.post(
+      'https://client-erp.local/api/v2/ingest',
+      payload,
+      { headers: { 'X-API-Key': process.env.SECRET } }
+    );
+    if(response.status === 200) {
+      log.info(`Sync successful for WB_ID: ${weighment.id}`);
+    }
+  } catch (error) {
+    queueForRetry(weighment);
+  }
+}</code></pre>
+</div>
+<div class="flex-1 space-y-6">
+<h3 class="font-outfit font-black text-3xl md:text-4xl text-white">Full-Stack Capability</h3>
+<p class="text-slate-400 text-lg leading-relaxed">Our in-house development team handles everything from the low-level RS232 serial parsing in C++ to the responsive React dashboards.</p>
+<ul class="space-y-4 pt-4 text-slate-300">
+<li class="flex items-start gap-3">
+<div class="mt-1 text-fuchsia-400"><i class="w-5 h-5" data-lucide="check-circle"></i></div>
+<div><strong class="text-white">API Development</strong><br/><span class="text-sm">We build REST and GraphQL APIs to expose your weighment data securely.</span></div>
+</li>
+<li class="flex items-start gap-3">
+<div class="mt-1 text-fuchsia-400"><i class="w-5 h-5" data-lucide="check-circle"></i></div>
+<div><strong class="text-white">Custom Dashboards</strong><br/><span class="text-sm">Don't like our standard charts? We'll build a custom BI dashboard tailored to your KPIs.</span></div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs -->
+<section class="py-32 relative overflow-hidden bg-slate-50 border-y border-slate-200" id="tech-specs">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<span class="inline-flex items-center gap-2 px-4 py-2 bg-slate-200 border border-slate-300 rounded-full text-slate-700 font-bold text-xs uppercase tracking-widest mb-6">
+<i class="w-4 h-4" data-lucide="settings"></i> Tech Stack
+                </span>
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-6">Modern Development.</h2>
+</div>
+<div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm max-w-4xl mx-auto gsap-reveal">
+<table class="w-full text-left border-collapse">
+<tbody class="divide-y divide-slate-200 text-sm">
+<tr class="bg-slate-50">
+<th class="py-4 px-6 font-outfit font-bold text-sm uppercase tracking-widest text-slate-900" colspan="2">Our Stack</th>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900 w-1/3">Hardware / Edge</td>
+<td class="py-4 px-6 text-slate-600">C#, .NET Core, Python, C++ (for serial and TCP protocols)</td>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Backend / Cloud</td>
+<td class="py-4 px-6 text-slate-600">Node.js, Go, Python (FastAPI), PostgreSQL, Redis</td>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Frontend / Web</td>
+<td class="py-4 px-6 text-slate-600">React, Next.js, TailwindCSS, WebSockets for live data</td>
+</tr>
+<tr class="hover:bg-slate-100 transition-colors">
+<td class="py-4 px-6 font-bold text-slate-900">Mobile</td>
+<td class="py-4 px-6 text-slate-600">React Native, Flutter (iOS &amp; Android)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-32 relative overflow-hidden bg-white" id="faq">
+<div class="max-w-4xl mx-auto px-4 relative z-10">
+<div class="text-center mb-16 gsap-reveal">
+<h2 class="font-outfit font-black text-4xl text-slate-900 mb-4">Custom Dev FAQs</h2>
+</div>
+<div class="space-y-4 gsap-reveal">
+<div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">Who owns the intellectual property (IP) of the custom code?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">For highly bespoke solutions developed exclusively for your enterprise, we offer IP transfer agreements. For general custom modules added to our core platform, we retain the IP while granting you a perpetual license.</p>
+</div>
+</div>
+<div class="faq-item bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden cursor-pointer" onclick="toggleFaq(this)">
+<div class="p-6 flex justify-between items-center">
+<h3 class="font-bold text-slate-900 text-lg">How do you charge for custom development?</h3>
+<i class="faq-icon w-5 h-5 text-slate-400" data-lucide="chevron-down"></i>
+</div>
+<div class="faq-answer px-6 pb-0">
+<p class="text-slate-600 pb-6">We provide a fixed-price Scope of Work (SOW) based on the exact requirements gathered during the discovery phase. No hidden hourly fees or open-ended billing.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Modern Premium CTA -->
+<section class="py-24 relative overflow-hidden bg-white">
+<div class="max-w-7xl mx-auto px-4 relative z-10">
+<div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-indigo-100 rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-xl text-center gsap-reveal">
+<!-- Abstract glowing orbs -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none rounded-[3rem]">
+<div class="absolute -top-[20%] -right-[10%] w-[50%] h-[100%] bg-primary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+<div class="absolute -bottom-[30%] -left-[10%] w-[60%] h-[100%] bg-secondary/20 blur-[120px] rounded-full mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="font-outfit font-black text-5xl md:text-7xl text-slate-900 mb-6 tracking-tight">Ready to upgrade your weighbridge?</h2>
+<p class="text-slate-600 text-xl mb-10 leading-relaxed">Join 500+ enterprise plants that have eliminated fraud and accelerated their operations with Aaravya.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-primary text-white rounded-xl font-outfit font-bold text-lg hover:bg-blue-600 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:-translate-y-1 transition-all duration-300" href="index.html#contact">
+<i class="w-6 h-6" data-lucide="phone"></i> Request Free Demo
+                        </a>
+<a class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white text-slate-700 border border-slate-200 shadow-sm rounded-xl font-outfit font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 backdrop-blur-md" href="index.html#contact">
+                            Speak to Sales
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-white border-t border-slate-200 py-10 text-center">
+<div class="max-w-7xl mx-auto px-4">
+<p class="text-slate-500 text-sm">© 2026 Aaravya Technology Pvt. Ltd.  ·  <a class="text-primary hover:underline" href="index.html">Back to Home</a>  ·  <a class="text-primary hover:underline" href="index.html#contact">Contact Us</a></p>
+</div>
+</footer>
+<!-- Init Scripts -->
+<script>
+        // Init Lucide Icons
+        if(typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+
+        // GSAP Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const revealElements = document.querySelectorAll(".gsap-reveal");
+            
+            revealElements.forEach((element) => {
+                gsap.to(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.8,
+                    ease: "power3.out"
+                });
+            });
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId, btn) {
+            // Remove active from all tabs and btns
+            document.querySelectorAll('.tab-content').forEach(t => {
+                t.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+
+            // Add active to targeted
+            document.getElementById('tab-' + tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // FAQ Toggle Logic
+        function toggleFaq(item) {
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-answer').classList.remove('open');
+            });
+
+            // Toggle clicked FAQ
+            if (!isActive) {
+                item.classList.add('active');
+                answer.classList.add('open');
+            }
+        }
+    </script>
+<!-- Lightbox Modal -->
+<div class="fixed inset-0 z-[100] bg-[#020617]/95 backdrop-blur-2xl flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500" id="gallery-lightbox">
+<button class="absolute top-6 right-6 lg:top-10 lg:right-10 w-14 h-14 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-500 z-50 cursor-pointer hover:rotate-90 hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.05)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]" onclick="closeLightbox()">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+</button>
+<!-- Navigation Arrows -->
+<button class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:-translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="prevLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<button class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 w-12 h-12 lg:w-16 lg:h-16 bg-white/5 hover:bg-white/20 border border-white/10 rounded-full flex items-center justify-center text-white transition-all duration-300 z-50 cursor-pointer hover:scale-110 hover:translate-x-1 shadow-[0_0_30px_rgba(255,255,255,0.05)]" onclick="nextLightboxImage(event)">
+<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+<div class="max-w-7xl w-full mx-16 lg:mx-24 relative transform scale-95 translate-y-12 opacity-0 transition-all duration-700 ease-out flex flex-col lg:flex-row items-center gap-8 lg:gap-16" id="lightbox-content-box">
+<!-- Image Container -->
+<div class="w-full lg:w-2/3 relative rounded-[2rem] p-2 bg-gradient-to-br from-white/20 to-white/0 border border-white/10 shadow-2xl overflow-hidden group">
+<div class="absolute inset-0 bg-blue-500/20 blur-[100px] -z-10 group-hover:bg-blue-400/30 transition-colors duration-700"></div>
+<img alt="Gallery Preview" class="w-full h-auto max-h-[70vh] object-contain rounded-[1.5rem] shadow-2xl bg-black/60 transition-opacity duration-300" id="lightbox-img" src=""/>
+</div>
+<!-- Details Container -->
+<div class="w-full lg:w-1/3 flex flex-col justify-center text-left">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 font-bold text-xs uppercase tracking-widest mb-6 w-max">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><path d="m14.31 8 5.74 9.94"></path><path d="M9.69 8h11.48"></path><path d="m7.38 12 5.74-9.94"></path><path d="M9.69 16 3.95 6.06"></path><path d="M14.31 16H2.83"></path><path d="m16.62 12-5.74 9.94"></path></svg> Gallery View
+                </div>
+<h3 class="font-outfit font-black text-4xl lg:text-5xl text-white mb-6 leading-tight transition-opacity duration-300" id="lightbox-title"></h3>
+<div class="w-12 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-6"></div>
+<p class="text-slate-400 text-lg lg:text-xl font-inter leading-relaxed max-w-lg transition-opacity duration-300" id="lightbox-desc"></p>
+</div>
+</div>
+</div>
+<script>
+        let currentGalleryIndex = 0;
+        let galleryItems = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('[onclick^="openLightbox("]');
+            galleryItems = Array.from(triggers).map((el, index) => {
+                const onclickStr = el.getAttribute('onclick');
+                const matches = onclickStr.match(/'([^']*)'/g);
+                if (matches && matches.length >= 3) {
+                    el.removeAttribute('onclick');
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        openLightboxByIndex(index);
+                    });
+                    return {
+                        src: matches[0].replace(/'/g, ''),
+                        title: matches[1].replace(/'/g, ''),
+                        desc: matches[2].replace(/'/g, '')
+                    };
+                }
+                return null;
+            }).filter(item => item !== null);
+        });
+
+        function openLightboxByIndex(index) {
+            if (galleryItems.length === 0) return;
+            
+            if (index < 0) index = galleryItems.length - 1;
+            if (index >= galleryItems.length) index = 0;
+            
+            currentGalleryIndex = index;
+            const item = galleryItems[index];
+            
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            const img = document.getElementById('lightbox-img');
+            const title = document.getElementById('lightbox-title');
+            const desc = document.getElementById('lightbox-desc');
+            
+            if (!lightbox.classList.contains('pointer-events-none')) {
+                img.style.opacity = '0';
+                title.style.opacity = '0';
+                desc.style.opacity = '0';
+                
+                setTimeout(() => {
+                    img.src = item.src;
+                    title.textContent = item.title;
+                    desc.textContent = item.desc;
+                    
+                    img.style.opacity = '1';
+                    title.style.opacity = '1';
+                    desc.style.opacity = '1';
+                }, 300);
+            } else {
+                img.src = item.src;
+                title.textContent = item.title;
+                desc.textContent = item.desc;
+                
+                img.style.opacity = '1';
+                title.style.opacity = '1';
+                desc.style.opacity = '1';
+                
+                lightbox.classList.remove('opacity-0', 'pointer-events-none');
+                setTimeout(() => {
+                    contentBox.classList.remove('scale-95', 'translate-y-12', 'opacity-0');
+                    contentBox.classList.add('scale-100', 'translate-y-0', 'opacity-100');
+                }, 50);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function nextLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex + 1);
+        }
+
+        function prevLightboxImage(e) {
+            if (e) e.stopPropagation();
+            openLightboxByIndex(currentGalleryIndex - 1);
+        }
+
+        function openLightbox(imgSrc, title, desc) {
+            const idx = galleryItems.findIndex(i => i.src === imgSrc);
+            if (idx !== -1) {
+                openLightboxByIndex(idx);
+            } else {
+                galleryItems.push({src: imgSrc, title, desc});
+                openLightboxByIndex(galleryItems.length - 1);
+            }
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('gallery-lightbox');
+            const contentBox = document.getElementById('lightbox-content-box');
+            
+            contentBox.classList.remove('scale-100', 'translate-y-0', 'opacity-100');
+            contentBox.classList.add('scale-95', 'translate-y-12', 'opacity-0');
+            
+            setTimeout(() => {
+                lightbox.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }, 400); 
+        }
+
+        document.getElementById('gallery-lightbox').addEventListener('click', function(e) {
+            if (e.target === this || e.target.id === 'lightbox-content-box') {
+                closeLightbox();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('gallery-lightbox').classList.contains('pointer-events-none')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowRight') nextLightboxImage();
+                if (e.key === 'ArrowLeft') prevLightboxImage();
+            }
+        });
+    </script>
+</body>
+</html>
