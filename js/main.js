@@ -249,18 +249,7 @@ function initUI() {
     });
 
 
-    // Sticky CTA Logic
-    const stickyCta = document.getElementById('sticky-cta');
-    ScrollTrigger.create({
-        start: "top -100",
-        onUpdate: (self) => {
-            if (self.direction === 1) { // Scrolling down
-                stickyCta.classList.add('visible');
-            } else if (self.scroll() < 200) {
-                stickyCta.classList.remove('visible');
-            }
-        }
-    });
+
 
     // Glow on hover for buttons
     document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
